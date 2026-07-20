@@ -6,14 +6,21 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, '__invoke'])->name('home');
 Route::get('/{locale}', [HomeController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('home.locale');
 Route::get('/{locale}/about', [AboutController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('about');
+Route::get('/{locale}/services', [ServicesController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('services');
+Route::get('/{locale}/faq', [FaqController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('faq');
+Route::get('/{locale}/contact', [ContactController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('contact');
+Route::post('/{locale}/contact', [ContactController::class, 'send'])->whereIn('locale', ['en', 'fr'])->name('contact.send');
 Route::get('/{locale}/blog', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog');
 Route::get('/{locale}/blog/category/{categorySlug}', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog.category');
 Route::get('/{locale}/blog/{slug}', [PostController::class, 'show'])->whereIn('locale', ['en', 'fr'])->name('post');
@@ -23,6 +30,12 @@ Route::get('/sitemap.xml', function () {
         ['loc' => url('/fr'), 'lastmod' => now()->toDateString()],
         ['loc' => url('/en/about'), 'lastmod' => now()->toDateString()],
         ['loc' => url('/fr/about'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/en/services'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr/services'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/en/faq'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr/faq'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/en/contact'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr/contact'), 'lastmod' => now()->toDateString()],
         ['loc' => url('/en/blog'), 'lastmod' => now()->toDateString()],
         ['loc' => url('/fr/blog'), 'lastmod' => now()->toDateString()],
     ];

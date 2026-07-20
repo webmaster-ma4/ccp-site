@@ -12,11 +12,12 @@
             </div>
         </section>
 
-        <section class="section">
+                <section class="section">
             <article class="card" style="line-height: 1.8;">
                 <p style="margin-top: 0; font-weight: 700; color: var(--accent-strong);">Category: {{ optional($post->category)->name ?? 'General' }}</p>
                 {!! nl2br(e($post->content)) !!}
             </article>
+            <p style="margin-top: 1rem;"><a href="{{ route('blog', ['locale' => $locale]) }}" class="button button-secondary" style="padding: 0.55rem 0.9rem;">&larr; {{ __('site.blog_label') }}</a></p>
         </section>
     </main>
 

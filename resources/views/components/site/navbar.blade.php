@@ -5,10 +5,12 @@
 
     <div class="nav-links">
         <a href="{{ route('home.locale', ['locale' => $locale]) }}#mission">{{ __('site.nav_mission') }}</a>
-        <a href="{{ route('home.locale', ['locale' => $locale]) }}#programs">{{ __('site.nav_programs') }}</a>
+        <a href="{{ route('services', ['locale' => $locale]) }}">{{ __('site.nav_services') }}</a>
         <a href="{{ route('about', ['locale' => $locale]) }}">{{ __('site.nav_about') }}</a>
         <a href="{{ route('blog', ['locale' => $locale]) }}">{{ __('site.nav_blog') }}</a>
         <a href="{{ route('home.locale', ['locale' => $locale]) }}#impact">{{ __('site.nav_impact') }}</a>
+        <a href="{{ route('faq', ['locale' => $locale]) }}">{{ __('site.nav_faq') }}</a>
+        <a href="{{ route('contact', ['locale' => $locale]) }}">{{ __('site.nav_partner') }}</a>
         <a href="{{ route('admin.dashboard') }}">{{ __('site.nav_admin') }}</a>
         <div class="locale-switcher" aria-label="Language switcher">
             <a href="{{ route('home.locale', ['locale' => 'en']) }}" class="{{ $locale === 'en' ? 'active' : '' }}">EN</a>

@@ -4,12 +4,12 @@
         <h1>{{ __('site.hero_title') }}</h1>
         <p>{{ __('site.hero_text') }}</p>
         <div class="hero-actions">
-            <a class="button button-primary" href="{{ route('home.locale', ['locale' => $locale]) }}#programs">{{ __('site.hero_primary_cta') }}</a>
-            <a class="button button-secondary" href="{{ route('home.locale', ['locale' => $locale]) }}#impact">{{ __('site.hero_secondary_cta') }}</a>
+            <a class="button button-primary" href="{{ route('services', ['locale' => $locale]) }}">{{ __('site.hero_primary_cta') }}</a>
+            <a class="button button-secondary" href="{{ route('contact', ['locale' => $locale]) }}">{{ __('site.hero_secondary_cta') }}</a>
         </div>
     </div>
 
-    <div class="hero-panel" aria-label="Highlights">
+    <div class="hero-panel" aria-label="Who We Are">
         <div>
             <h3>{{ __('site.hero_panel_title') }}</h3>
             <ul>
