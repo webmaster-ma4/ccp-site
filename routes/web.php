@@ -1,0 +1,61 @@
+<?php
+
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Middleware\AuthenticateAdmin;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [HomeController::class, '__invoke'])->name('home');
+Route::get('/{locale}', [HomeController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('home.locale');
+Route::get('/{locale}/about', [AboutController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('about');
+Route::get('/{locale}/blog', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog');
+Route::get('/{locale}/blog/category/{categorySlug}', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog.category');
+Route::get('/{locale}/blog/{slug}', [PostController::class, 'show'])->whereIn('locale', ['en', 'fr'])->name('post');
+Route::get('/sitemap.xml', function () {
+    $localeUrls = [
+        ['loc' => url('/'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/en/about'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr/about'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/en/blog'), 'lastmod' => now()->toDateString()],
+        ['loc' => url('/fr/blog'), 'lastmod' => now()->toDateString()],
+    ];
+
+    $posts = App\Models\Post::query()->whereNotNull('published_at')->get();
+    foreach ($posts as $post) {
+        $localeUrls[] = [
+            'loc' => url('/en/blog/' . $post->slug),
+            'lastmod' => optional($post->published_at)->toDateString(),
+        ];
+        $localeUrls[] = [
+            'loc' => url('/fr/blog/' . $post->slug),
+            'lastmod' => optional($post->published_at)->toDateString(),
+        ];
+    }
+
+    return response(view('sitemap', ['urls' => $localeUrls]), 200, ['Content-Type' => 'application/xml']);
+})->name('sitemap');
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware([AuthenticateAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', DashboardController::class)->name('dashboard');
+    Route::get('/posts', [AdminPostController::class, 'index'])->name('posts.index');
+    Route::get('/posts/create', [AdminPostController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [AdminPostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}/edit', [AdminPostController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
+    Route::delete('/posts/{post}', [AdminPostController::class, 'destroy'])->name('posts.destroy');
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+});

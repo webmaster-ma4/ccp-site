@@ -1,0 +1,306 @@
+# PROJECT_CONTEXT.md
+
+# Climate Catalyst Prize Website
+
+## Objectif
+
+Développer le site web officiel de l'ONG **Climate Catalyst Prize**.
+
+Le site doit être :
+
+- moderne
+- très rapide
+- responsive
+- optimisé SEO
+- accessible (WCAG)
+- multilingue (Français / English)
+- facilement maintenable
+- évolutif
+
+Le site doit inspirer confiance et refléter une organisation internationale engagée dans la lutte contre le changement climatique.
+
+---
+
+# Stack technique
+
+Le projet sera développé avec :
+
+- Laravel 12+
+- PHP 8.4+
+- Livewire 3
+- Volt
+- Blade
+- TailwindCSS 4
+- AlpineJS
+- Vite
+
+Les composants Livewire/Volt doivent être privilégiés afin d'obtenir une expérience très fluide donnant l'impression d'une SPA tout en conservant les avantages du SSR.
+
+Éviter les frameworks JS lourds si Livewire permet de résoudre le problème.
+
+---
+
+# Architecture
+
+Respecter une architecture propre.
+
+Organisation recommandée :
+
+```
+app/
+resources/
+routes/
+config/
+
+resources/views
+    layouts/
+    components/
+    pages/
+
+app/Livewire
+    Public/
+    Admin/
+```
+
+Créer des composants réutilisables.
+
+Limiter la duplication.
+
+---
+
+# Internationalisation
+
+Le site doit être entièrement bilingue :
+
+- Français
+- English
+
+Utiliser exclusivement le système de traduction Laravel.
+
+Aucune chaîne ne doit être codée en dur.
+
+Prévoir facilement l'ajout de nouvelles langues.
+
+---
+
+# Objectifs UX
+
+Le site doit paraître moderne.
+
+Utiliser :
+
+- transitions discrètes
+- animations légères
+- chargements Livewire
+- skeleton loaders
+- lazy loading
+- préchargement lorsque pertinent
+
+Le visiteur ne doit jamais avoir l'impression d'attendre.
+
+---
+
+# Responsive
+
+Mobile first.
+
+Support :
+
+- mobile
+- tablette
+- desktop
+- écrans larges
+
+---
+
+# Performance
+
+Objectif Lighthouse :
+
+- Performance >95
+- SEO >95
+- Accessibility >95
+- Best Practices >95
+
+Optimiser :
+
+- images
+- fonts
+- CSS
+- JS
+- cache
+- requêtes
+
+---
+
+# SEO
+
+Prévoir :
+
+- Meta tags
+- OpenGraph
+- Twitter Cards
+- Sitemap
+- Robots
+- Structured Data (Schema.org)
+- Canonical URLs
+
+Les articles du blog doivent être optimisés SEO.
+
+---
+
+# Blog
+
+Le site doit intégrer un véritable blog.
+
+Fonctionnalités :
+
+- catégories
+- tags
+- recherche
+- pagination
+- image de couverture
+- auteur
+- date
+- lecture estimée
+- articles similaires
+- partage réseaux sociaux
+
+Prévoir une excellente expérience de lecture.
+
+---
+
+# Administration
+
+Prévoir une interface d'administration permettant de gérer :
+
+- pages
+- articles
+- catégories
+- médias
+- traductions
+- utilisateurs
+
+Architecture extensible.
+
+---
+
+# Sécurité
+
+Respecter les bonnes pratiques Laravel.
+
+- CSRF
+- Validation
+- Authorization
+- Policies
+- Rate limiting
+- Protection XSS
+- Protection SQL Injection
+
+---
+
+# Code
+
+Le code doit être :
+
+- propre
+- documenté
+- typé
+- modulaire
+- maintenable
+
+Respecter :
+
+- PSR
+- SOLID
+- DRY
+- KISS
+
+---
+
+# Design
+
+Le design doit être élégant.
+
+Style :
+
+- institutionnel moderne
+- premium
+- minimaliste
+- professionnel
+
+Palette inspirée de :
+
+- environnement
+- climat
+- innovation
+
+Utiliser beaucoup d'espace blanc.
+
+Les animations doivent rester discrètes.
+
+---
+
+# Composants attendus
+
+Créer des composants réutilisables :
+
+- Navbar
+- Footer
+- Hero
+- CTA
+- Cards
+- Feature blocks
+- Testimonials
+- FAQ
+- Timeline
+- Statistics
+- Newsletter
+- Partners
+- Blog cards
+- Breadcrumb
+- Pagination
+- Modal
+- Toast
+- Forms
+
+---
+
+# Accessibilité
+
+Respecter WCAG.
+
+Prévoir :
+
+- navigation clavier
+- focus visibles
+- contrastes suffisants
+- aria-label
+- titres cohérents
+- alt sur toutes les images
+
+---
+
+# Qualité
+
+Le code produit doit pouvoir être utilisé directement en production.
+
+Éviter :
+
+- hacks
+- duplication
+- code mort
+- commentaires inutiles
+
+Toujours privilégier une architecture évolutive.
+
+---
+
+# Philosophie
+
+Chaque fonctionnalité doit être pensée comme si le projet devait évoluer pendant plusieurs années.
+
+Le code doit être facile à maintenir, facile à tester et facile à faire évoluer.
+
+L'expérience utilisateur est prioritaire sans sacrifier les performances.
+
