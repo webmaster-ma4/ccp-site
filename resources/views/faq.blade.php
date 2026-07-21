@@ -8,7 +8,7 @@
         <span class="page-hero-eyebrow">{{ __('Resources') }}</span>
         <h1 class="page-hero-title">{{ __('Frequently Asked Questions') }}</h1>
         <p class="page-hero-subtitle">
-            {{ __('Find answers about our funding criteria, application process, and technical assistance programs.') }}
+            {{ __('Clear answers to help you understand our mandate, services, eligibility, and partnership approach.') }}
         </p>
     </div>
 </section>
@@ -23,76 +23,109 @@
 <section class="section-py" style="background: #FFFFFF;">
     <div class="container-ccp">
         
-        <div style="max-width: 800px; margin: 0 auto;">
-            
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #081C3A; margin-bottom: 2rem;">{{ __('Funding & Eligibility') }}</h3>
+        <div style="max-width: 840px; margin: 0 auto;">
             
             <div style="border-top: 1px solid #EEF1F5;">
                 
                 {{-- FAQ 1 --}}
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span class="faq-question-text">{{ __('Which countries are eligible for CCP support?') }}</span>
+                        <span class="faq-question-text">{{ __('What is the Climate Catalyst Prize?') }}</span>
                         <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
                     </div>
                     <div class="faq-answer">
-                        {{ __('We exclusively support projects located within the 46 countries currently classified as Least Developed Countries (LDCs) by the United Nations. Our mandate is to direct climate finance to the most vulnerable nations with the least capacity to adapt.') }}
+                        {{ __('CCP is an international NGO dedicated to supporting Least Developed Countries to build climate resilience, transition to low-carbon economies, and access climate finance and carbon markets.') }}
                     </div>
                 </div>
                 
                 {{-- FAQ 2 --}}
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span class="faq-question-text">{{ __('What types of organizations can apply?') }}</span>
+                        <span class="faq-question-text">{{ __('Who do you work with?') }}</span>
                         <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
                     </div>
                     <div class="faq-answer">
-                        {{ __('We accept applications from national and sub-national government agencies in LDCs, private sector project developers, and established non-governmental organizations (NGOs) that have a proven track record of project execution in the target country.') }}
+                        {{ __('We partner with LDC national governments, municipalities, NGOs, community organizations, and development partners to design and deliver climate projects.') }}
                     </div>
                 </div>
                 
                 {{-- FAQ 3 --}}
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span class="faq-question-text">{{ __('What is the typical funding size for a CCP project?') }}</span>
+                        <span class="faq-question-text">{{ __('What services does CCP provide?') }}</span>
                         <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
                     </div>
                     <div class="faq-answer">
-                        {{ __('While we do provide early-stage grants for project preparation (typically $50k - $250k), our primary role is structuring larger projects for international capital matching. These structured projects generally range from $5 Million to $50 Million in total capital requirements.') }}
+                        <p style="margin-bottom: 0.75rem;">{{ __('We provide 6 core areas:') }}</p>
+                        <ul style="list-style: disc; padding-left: 1.25rem; margin: 0; line-height: 1.8;">
+                            <li>{{ __('Climate Resilience & Adaptation planning') }}</li>
+                            <li>{{ __('Sustainable Agriculture & Water Security') }}</li>
+                            <li>{{ __('Low Carbon Economy development') }}</li>
+                            <li>{{ __('Carbon Credits development and trade') }}</li>
+                            <li>{{ __('Technical Assistance for project design and MRV') }}</li>
+                            <li>{{ __('Fundraising and access to climate finance') }}</li>
+                        </ul>
                     </div>
                 </div>
 
-            </div>
-            
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #081C3A; margin: 4rem 0 2rem;">{{ __('Application Process') }}</h3>
-            
-            <div style="border-top: 1px solid #EEF1F5;">
-                
                 {{-- FAQ 4 --}}
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span class="faq-question-text">{{ __('How long does the review process take?') }}</span>
+                        <span class="faq-question-text">{{ __('Do you only work in LDCs?') }}</span>
                         <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
                     </div>
                     <div class="faq-answer">
-                        {{ __('Initial screening applications are reviewed by our technical committee within 14 business days. If selected to move forward, the full proposal and due diligence phase typically takes 3 to 6 months depending on the project\'s complexity.') }}
+                        {{ __('Yes. Our mandate is focused exclusively on Least Developed Countries as defined by the United Nations. This is where support is needed most.') }}
                     </div>
                 </div>
-                
+
                 {{-- FAQ 5 --}}
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span class="faq-question-text">{{ __('Do you require co-financing?') }}</span>
+                        <span class="faq-question-text">{{ __('How does CCP help with carbon credits?') }}</span>
                         <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
                     </div>
                     <div class="faq-answer">
-                        {{ __('For project preparation facilities, co-financing is encouraged but not strictly required. However, for full project implementation, demonstrating government or private sector co-investment significantly strengthens the bankability of the proposal when presenting to international funds.') }}
+                        {{ __('We support the full lifecycle: project identification, methodology selection, validation, MRV setup, and market access. Our goal is to help LDCs generate revenue from their climate action.') }}
+                    </div>
+                </div>
+
+                {{-- FAQ 6 --}}
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">{{ __('How can my organization partner with CCP?') }}</span>
+                        <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
+                    </div>
+                    <div class="faq-answer">
+                        {{ __('If you are an NGO, government, or community group in an LDC working on climate, adaptation, or sustainability, reach out to us. We offer technical assistance and help connect you to funding.') }}
+                    </div>
+                </div>
+
+                {{-- FAQ 7 --}}
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">{{ __('How is CCP funded?') }}</span>
+                        <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
+                    </div>
+                    <div class="faq-answer">
+                        {{ __('CCP is funded through grants, philanthropic donations, project fees, and partnerships with development agencies and the private sector.') }}
+                    </div>
+                </div>
+
+                {{-- FAQ 8 --}}
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">{{ __('Where are you based?') }}</span>
+                        <div class="faq-icon"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></div>
+                    </div>
+                    <div class="faq-answer">
+                        {{ __('CCP is registered in the USA and operates globally with a focus on projects in LDCs across Africa, Asia, Latin America, Caribbean and the Pacific.') }}
                     </div>
                 </div>
 
             </div>
             
-            <div style="margin-top: 4rem; padding: 2rem; background: #F6F8FA; border-radius: 12px; text-align: center; border: 1px solid #E0E6ED;">
+            <div style="margin-top: 4rem; padding: 2.5rem; background: #F6F8FA; border-radius: 12px; text-align: center; border: 1px solid #E0E6ED;">
                 <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin-bottom: 0.5rem;">{{ __('Still have questions?') }}</h4>
                 <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #5E7590; margin-bottom: 1.5rem;">
                     {{ __('Our team is available to help clarify our guidelines.') }}
@@ -107,3 +140,4 @@
 </section>
 
 @endsection
+

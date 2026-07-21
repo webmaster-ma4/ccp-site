@@ -104,47 +104,83 @@
 {{-- 4. SERVICES / EXPERTISE --}}
 <section class="services-section" id="services">
     <div class="container-ccp text-center">
-        <span class="eyebrow">{{ __('Our Expertise') }}</span>
-        <h2 class="section-title">{{ __('Comprehensive Climate Solutions') }}</h2>
+        <span class="eyebrow">{{ __('Services for a Just Transition') }}</span>
+        <h2 class="section-title">{{ __('What We Do') }}</h2>
         <p class="section-lead">
-            {{ __('We provide end-to-end support to unlock climate finance and implement sustainable initiatives across key sectors in the developing world.') }}
+            {{ __('We support NGOs, municipalities, and governments in Least Developed Countries to build climate resilience, grow low-carbon economies, and access climate finance.') }}
         </p>
     </div>
     
-    <div class="services-grid">
-        <a href="{{ route('services', ['locale' => $locale]) }}#carbon-markets" class="service-card animate-up delay-1">
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <a href="{{ route('services', ['locale' => $locale]) }}#resilience" class="service-card animate-up delay-1">
             <span class="service-num">01</span>
-            <div class="service-icon">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-            </div>
-            <h3 class="service-title">{{ __('Carbon Market Access') }}</h3>
-            <p class="service-text">{{ __('Assisting LDCs in navigating international compliance and voluntary carbon markets to generate sustainable revenue.') }}</p>
-            <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
-        </a>
-        
-        <a href="{{ route('services', ['locale' => $locale]) }}#adaptation" class="service-card animate-up delay-2">
-            <span class="service-num">02</span>
             <div class="service-icon">
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
-            <h3 class="service-title">{{ __('Adaptation & Resilience') }}</h3>
-            <p class="service-text">{{ __('Designing robust infrastructure, water management, and early warning systems to protect vulnerable communities.') }}</p>
+            <h3 class="service-title">{{ __('Climate Resilience & Adaptation') }}</h3>
+            <p class="service-text">{{ __('Planning and projects for cities, farms, and communities facing climate shocks.') }}</p>
             <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
         </a>
-        
-        <a href="{{ route('services', ['locale' => $locale]) }}#agriculture" class="service-card animate-up delay-3">
-            <span class="service-num">03</span>
+
+        <a href="{{ route('services', ['locale' => $locale]) }}#agriculture" class="service-card animate-up delay-2">
+            <span class="service-num">02</span>
             <div class="service-icon">
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
             </div>
-            <h3 class="service-title">{{ __('Sustainable Agriculture') }}</h3>
-            <p class="service-text">{{ __('Promoting regenerative farming practices that enhance food security while sequestering soil carbon.') }}</p>
+            <h3 class="service-title">{{ __('Agriculture & Food Systems') }}</h3>
+            <p class="service-text">{{ __('Climate-smart farming, water security, and food systems transformation.') }}</p>
+            <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+        </a>
+
+        <a href="{{ route('services', ['locale' => $locale]) }}#low-carbon" class="service-card animate-up delay-3">
+            <span class="service-num">03</span>
+            <div class="service-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            <h3 class="service-title">{{ __('Low Carbon Economy Development') }}</h3>
+            <p class="service-text">{{ __('Support for clean energy, green jobs, and decarbonization pathways.') }}</p>
+            <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+        </a>
+        
+        <a href="{{ route('services', ['locale' => $locale]) }}#carbon-markets" class="service-card animate-up delay-4">
+            <span class="service-num">04</span>
+            <div class="service-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            </div>
+            <h3 class="service-title">{{ __('Carbon Credits & Carbon Trade') }}</h3>
+            <p class="service-text">{{ __('Carbon credit development, trading, baseline setup, and capacity building.') }}</p>
+            <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+        </a>
+        
+        <a href="{{ route('services', ['locale' => $locale]) }}#technical-assistance" class="service-card animate-up delay-5">
+            <span class="service-num">05</span>
+            <div class="service-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+            <h3 class="service-title">{{ __('Technical Assistance') }}</h3>
+            <p class="service-text">{{ __('Project design, MRV, policy support, feasibility studies, and implementation.') }}</p>
+            <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+        </a>
+
+        <a href="{{ route('services', ['locale' => $locale]) }}#funding-finance" class="service-card animate-up delay-6">
+            <span class="service-num">06</span>
+            <div class="service-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3 class="service-title">{{ __('Funding & Resource Mobilization') }}</h3>
+            <p class="service-text">{{ __('Connecting LDCs and NGOs to grants, climate funds (GCF, GEF), and investors.') }}</p>
             <span class="service-link">{{ __('Explore') }} <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
         </a>
     </div>

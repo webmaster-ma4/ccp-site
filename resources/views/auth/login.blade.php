@@ -22,7 +22,7 @@
         <div class="auth-visual-overlay"></div>
         <div class="auth-visual-content">
             <div class="auth-visual-line"></div>
-            <h2>{{ __('Driving Impact,<br>Delivering Change.') }}</h2>
+            <h2>{!! __('Driving Impact,<br>Delivering Change.') !!}</h2>
             <p>{{ __('Secure access portal for Climate Catalyst Prize administrators and technical staff. Authorized personnel only.') }}</p>
         </div>
     </div>

@@ -13,7 +13,7 @@
     {{-- Content --}}
     <div class="hero-content">
         <div class="animate-up delay-1">
-            <span class="hero-eyebrow">{{ __('Empowering Emerging Economies') }}</span>
+            <span class="hero-eyebrow">{{ __('Catalyzing Climate Solutions in LDCs') }}</span>
         </div>
         
         <h1 class="hero-title animate-up delay-2">

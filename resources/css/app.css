@@ -336,8 +336,10 @@ img {
 }
 
 .navbar-logo img {
-    height: 48px;
+    height: 46px;
     width: auto;
+    max-width: 210px;
+    object-fit: contain;
     transition: all 0.3s ease;
 }
 
@@ -347,6 +349,10 @@ img {
 
 .navbar-logo .logo-dark {
     display: none;
+}
+
+.navbar.scrolled .navbar-logo img {
+    height: 40px;
 }
 
 .navbar.scrolled .navbar-logo .logo-light {

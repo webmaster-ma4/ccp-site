@@ -74,43 +74,31 @@
             
             {{-- Contact Info --}}
             <div class="animate-right">
-                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;">{{ __('Our Offices') }}</h2>
+                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;">{{ __('Global Presence') }}</h2>
                 
-                <div style="margin-bottom: 3rem;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin-bottom: 0.5rem;">{{ __('Global Headquarters (Geneva)') }}</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.6; margin-bottom: 1rem;">
-                        100 Climate Avenue<br>
-                        1201 Geneva, Switzerland
-                    </p>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #162235;">
-                        <svg width="18" height="18" fill="none" stroke="#C8A04D" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        +41 22 123 45 67
+                <div style="margin-bottom: 2.5rem; background: #F6F8FA; padding: 2rem; border-radius: 12px; border: 1px solid #E0E6ED;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(200,160,77,0.15); color: #C8A04D; display: flex; align-items: center; justify-content: center;">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin: 0;">{{ __('Registered & Working Globally') }}</h4>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #162235;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.7; margin-bottom: 1.25rem;">
+                        {{ __('The Climate Catalyst Prize is registered in the USA and operates globally with a focus on projects in Least Developed Countries across Africa, Asia, Latin America, the Caribbean, and the Pacific.') }}
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #162235;">
                         <svg width="18" height="18" fill="none" stroke="#C8A04D" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <a href="mailto:contact@climatecatalystprize.org" style="color: #081C3A; font-weight: 500;">contact@climatecatalystprize.org</a>
+                        <a href="mailto:contact@climatecatalystprize.org" style="color: #081C3A; font-weight: 600;">contact@climatecatalystprize.org</a>
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin-bottom: 0.5rem;">{{ __('Regional Office (Dakar)') }}</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.6; margin-bottom: 1rem;">
-                        45 Avenue Léopold Sédar Senghor<br>
-                        Dakar, Senegal
+                <div style="padding: 2rem; background: #081C3A; border-radius: 12px; color: #FFFFFF;">
+                    <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #C8A04D;">{{ __('Partner With Us') }}</h4>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1.5rem;">
+                        {{ __('If you are an organization in an LDC working on climate, resilience, agriculture, or carbon markets — we can help. Let’s build projects that deliver adaptation, mitigation, and sustainable development.') }}
                     </p>
-                    <div style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #162235;">
-                        <svg width="18" height="18" fill="none" stroke="#C8A04D" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        +221 33 800 00 00
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem; padding: 2rem; background: #081C3A; border-radius: 12px; color: #FFFFFF;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #C8A04D;">{{ __('Project Funding Inquiries') }}</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 1.25rem;">
-                        {{ __('If you are seeking funding or technical assistance for a project, please use our dedicated application portal.') }}
-                    </p>
-                    <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-outline-white btn-sm">
-                        {{ __('Go to Application Portal') }}
+                    <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-gold btn-sm">
+                        {{ __('Apply for Support') }}
                     </a>
                 </div>
 
@@ -120,3 +108,4 @@
 </section>
 
 @endsection
+
