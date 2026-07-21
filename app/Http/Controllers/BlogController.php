@@ -12,7 +12,6 @@ class BlogController extends Controller
     public function __invoke(?string $locale = null, ?string $categorySlug = null): View
     {
         $locale = in_array($locale, ['en', 'fr'], true) ? $locale : config('app.locale');
-        App::setLocale($locale);
 
         $query = Post::query()
             ->whereNotNull('published_at')

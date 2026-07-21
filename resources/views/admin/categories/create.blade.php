@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create category</title>
+    <title>{{ __("Create category") }}</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 2rem; background: #f6f7f3; color: #11211f; }
         form { background: white; border-radius: 1rem; padding: 1.25rem; max-width: 420px; }
@@ -13,14 +13,14 @@
     </style>
 </head>
 <body>
-    <h1>Create category</h1>
+    <h1>{{ __("Create category") }}</h1>
     <form method="POST" action="{{ route('admin.categories.store') }}">
         @csrf
-        <label>Name</label>
+        <label>{{ __("Name") }}</label>
         <input name="name" required>
-        <label>Slug</label>
+        <label>{{ __("Slug") }}</label>
         <input name="slug" required>
-        <button type="submit">Save category</button>
+        <button type="submit">{{ __("Save category") }}</button>
     </form>
 </body>
 </html>

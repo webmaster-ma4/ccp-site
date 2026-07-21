@@ -13,12 +13,11 @@ class ContactController extends Controller
     public function __invoke(?string $locale = null): View
     {
         $locale = in_array($locale, ['en', 'fr'], true) ? $locale : config('app.locale');
-        App::setLocale($locale);
 
         return view('contact', [
             'locale' => $locale,
-            'title' => __('site.partner_title'),
-            'description' => __('site.partner_intro'),
+            'title' => __('Partner With Us'),
+            'description' => __('If you are an organization in an LDC working on climate, resilience, agriculture, or carbon markets — we can help. Let\'s build projects that deliver adaptation, mitigation, and sustainable development.'),
         ]);
     }
 
@@ -36,10 +35,9 @@ class ContactController extends Controller
             'message' => 'required|string|max:5000',
         ]);
 
-        // Log the contact form submission (in production, send an email)
         Log::info('Contact form submission', $validated);
 
         return redirect()->route('contact', ['locale' => $locale])
-            ->with('success', __('site.partner_form_success'));
+            ->with('success', __('Thank you for reaching out. We will get back to you shortly.'));
     }
 }

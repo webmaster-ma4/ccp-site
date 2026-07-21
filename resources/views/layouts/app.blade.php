@@ -3,25 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? __('site.meta_title') }}</title>
-    <meta name="description" content="{{ $description ?? __('site.meta_description') }}">
-    <meta name="keywords" content="{{ __('site.meta_keywords') }}">
+    <title>{{ $title ?? __("Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs") }}</title>
+    <meta name="description" content="{{ $description ?? __("Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.") }}">
+    <meta name="keywords" content="{{ __("climate, LDCs, climate finance, carbon markets, resilience, sustainable agriculture, low carbon economy, GCF, adaptation") }}">
     <meta name="robots" content="index,follow">
     <link rel="canonical" href="{{ url()->current() }}">
-    <meta property="og:title" content="{{ $title ?? __('site.meta_title') }}">
-    <meta property="og:description" content="{{ $description ?? __('site.meta_description') }}">
+    <meta property="og:title" content="{{ $title ?? __("Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs") }}">
+    <meta property="og:description" content="{{ $description ?? __("Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.") }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:site_name" content="{{ __('site.site_name') }}">
+    <meta property="og:site_name" content="{{ __("Climate Catalyst Prize") }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $title ?? __('site.meta_title') }}">
-    <meta name="twitter:description" content="{{ $description ?? __('site.meta_description') }}">
+    <meta name="twitter:title" content="{{ $title ?? __("Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs") }}">
+    <meta name="twitter:description" content="{{ $description ?? __("Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.") }}">
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
         "@type": "Organization",
         "name": "Climate Catalyst Prize",
-        "description": "{{ __('site.meta_description') }}",
+        "description": "{{ __("Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.") }}",
         "url": "{{ url('/') }}",
         "award": "Climate Catalyst Prize"
     }
@@ -31,12 +31,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
     @endif
 </head>
 <body>
+    @include('components.site.navbar', ['locale' => app()->getLocale()])
+
     <div id="app">
         @yield('content')
     </div>
+
+    @include('components.site.footer')
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {

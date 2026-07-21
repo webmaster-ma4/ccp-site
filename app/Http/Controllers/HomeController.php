@@ -11,12 +11,10 @@ class HomeController extends Controller
     {
         $locale = in_array($locale, ['en', 'fr'], true) ? $locale : config('app.locale');
 
-        App::setLocale($locale);
-
         return view('home', [
             'locale' => $locale,
-            'title' => __('site.meta_title'),
-            'description' => __('site.meta_description'),
+            'title' => __('Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs'),
+            'description' => __('Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.'),
         ]);
     }
 }

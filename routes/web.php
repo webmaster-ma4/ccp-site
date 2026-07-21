@@ -10,6 +10,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Admin\EligibleCountryController;
+use App\Http\Controllers\EligibleCountryController as PublicEligibleCountryController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +23,13 @@ Route::get('/{locale}/services', [ServicesController::class, '__invoke'])->where
 Route::get('/{locale}/faq', [FaqController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('faq');
 Route::get('/{locale}/contact', [ContactController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('contact');
 Route::post('/{locale}/contact', [ContactController::class, 'send'])->whereIn('locale', ['en', 'fr'])->name('contact.send');
+Route::get('/{locale}/apply', [App\Http\Controllers\ApplyController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('apply');
+Route::get('/{locale}/map', [App\Http\Controllers\EligibleCountryController::class, 'map'])->whereIn('locale', ['en', 'fr'])->name('map');
 Route::get('/{locale}/blog', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog');
 Route::get('/{locale}/blog/category/{categorySlug}', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog.category');
 Route::get('/{locale}/blog/{slug}', [PostController::class, 'show'])->whereIn('locale', ['en', 'fr'])->name('post');
+Route::get('/api/eligible-countries', [PublicEligibleCountryController::class, 'index'])->name('api.eligible-countries');
+
 Route::get('/sitemap.xml', function () {
     $localeUrls = [
         ['loc' => url('/'), 'lastmod' => now()->toDateString()],
@@ -71,4 +77,10 @@ Route::middleware([AuthenticateAdmin::class])->prefix('admin')->name('admin.')->
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+
+    Route::get('/eligible-countries', [EligibleCountryController::class, 'index'])->name('eligible-countries.index');
+    Route::post('/eligible-countries', [EligibleCountryController::class, 'store'])->name('eligible-countries.store');
+    Route::get('/eligible-countries/{eligibleCountry}/edit', [EligibleCountryController::class, 'edit'])->name('eligible-countries.edit');
+    Route::put('/eligible-countries/{eligibleCountry}', [EligibleCountryController::class, 'update'])->name('eligible-countries.update');
+    Route::delete('/eligible-countries/{eligibleCountry}', [EligibleCountryController::class, 'destroy'])->name('eligible-countries.destroy');
 });

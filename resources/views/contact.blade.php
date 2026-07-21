@@ -1,79 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('components.site.navbar', ['locale' => $locale])
+    @include('components.site.breadcrumb')
 
     <main class="page-content">
         <section class="hero" style="grid-template-columns: 1fr;">
             <div>
-                <span class="eyebrow">{{ __('site.partner_title') }}</span>
-                <h1>{{ __('site.partner_title') }}</h1>
-                <p>{{ __('site.partner_intro') }}</p>
+                <span class="eyebrow">{{ __("Contact Us") }}</span>
+                <h1>{{ __("Let's discuss your climate project") }}</h1>
+                <p>{{ __("Reach out to explore how we can support your organization in developing and funding climate initiatives in LDCs.") }}</p>
             </div>
         </section>
 
-        <!-- Who We Work With -->
-        <section class="section">
-            <div class="impact-panel">
-                <div class="impact-copy">
-                    <h3>{{ __('site.partner_who_title') }}</h3>
-                    <p>{{ __('site.partner_who_text') }}</p>
-                    <p style="margin-top: 0.5rem; color: var(--accent-strong); font-weight: 700;">{{ __('site.partner_location') }}</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Form -->
         <section class="section">
             <div class="section-heading">
                 <div>
-                    <h2>{{ __('site.partner_form_title') }}</h2>
+                    <h2>{{ __("Get in Touch") }}</h2>
+                    <p>{{ __("We typically respond within 5 business days") }}</p>
                 </div>
             </div>
 
             @if (session('success'))
-                <div class="alert-success">{{ session('success') }}</div>
+                <div class="alert alert-success">{{ session('success') }}</div>
             @endif
 
-            <form class="contact-form" method="POST" action="{{ route('contact.send', ['locale' => $locale]) }}">
-                @csrf
+            <div class="card">
+                <form class="contact-form" method="POST" action="{{ route('contact.send', ['locale' => $locale]) }}">
+                    @csrf
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name" class="form-label">{{ __("Full Name") }}</label>
+                            <input type="text" id="name" name="name" class="form-control" required maxlength="255">
+                            @error('name')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="name">{{ __('site.partner_form_name') }}</label>
-                    <input type="text" id="name" name="name" required maxlength="255">
-                </div>
+                        <div class="form-group">
+                            <label for="organization" class="form-label">{{ __("Organization") }}</label>
+                            <input type="text" id="organization" name="organization" class="form-control" required maxlength="255">
+                            @error('organization')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="organization">{{ __('site.partner_form_org') }}</label>
-                    <input type="text" id="organization" name="organization" required maxlength="255">
-                </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">{{ __("Email") }}</label>
+                            <input type="email" id="email" name="email" class="form-control" required maxlength="255">
+                            @error('email')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="email">{{ __('site.partner_form_email') }}</label>
-                    <input type="email" id="email" name="email" required maxlength="255">
-                </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">{{ __("Phone") }}</label>
+                            <input type="text" id="phone" name="phone" class="form-control" maxlength="50">
+                            @error('phone')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="phone">{{ __('site.partner_form_phone') }}</label>
-                    <input type="text" id="phone" name="phone" maxlength="50">
-                </div>
+                        <div class="form-group">
+                            <label for="country" class="form-label">{{ __("Country") }}</label>
+                            <input type="text" id="country" name="country" class="form-control" required maxlength="255">
+                            @error('country')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="country">{{ __('site.partner_form_country') }}</label>
-                    <input type="text" id="country" name="country" required maxlength="255">
-                </div>
+                        <div class="form-group">
+                            <label for="organization_type" class="form-label">{{ __("Organization Type") }}</label>
+                            <select id="organization_type" name="organization_type" class="form-control">
+                                <option value="">{{ __("Select type") }}</option>
+                                <option value="government">{{ __("Government / Ministry") }}</option>
+                                <option value="municipality">{{ __("Municipality / City") }}</option>
+                                <option value="ngo">{{ __("NGO / Civil Society") }}</option>
+                                <option value="academic">{{ __("Academic / Research") }}</option>
+                                <option value="private">{{ __("Private Sector") }}</option>
+                                <option value="other">{{ __("Other") }}</option>
+                            </select>
+                            @error('organization_type')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
 
-                <div class="form-group">
-                    <label for="message">{{ __('site.partner_form_message') }}</label>
-                    <textarea id="message" name="message" required maxlength="5000"></textarea>
-                </div>
+                        <div class="form-group full-width">
+                            <label for="message" class="form-label">{{ __("Message") }}</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required maxlength="5000" placeholder="{{ __("Tell us about your climate project, your organization, and how we can help.") }}"></textarea>
+                            @error('message')<div class="form-error">{{ $message }}</div>@enderror
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <button type="submit" class="button button-primary">{{ __('site.partner_form_submit') }}</button>
-                </div>
-            </form>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">{{ __("Send Message") }}</button>
+                        <p class="form-note">{{ __("We will get back to you within 5 business days.") }}</p>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
-
-    @include('components.site.footer')
 @endsection

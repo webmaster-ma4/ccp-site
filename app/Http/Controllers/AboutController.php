@@ -10,12 +10,11 @@ class AboutController extends Controller
     public function __invoke(?string $locale = null): View
     {
         $locale = in_array($locale, ['en', 'fr'], true) ? $locale : config('app.locale');
-        App::setLocale($locale);
 
         return view('about', [
             'locale' => $locale,
-            'title' => __('site.about_title'),
-            'description' => __('site.about_text'),
+            'title' => __('The Story of Climate Catalyst Prize'),
+            'description' => __('The Climate Catalyst Prize was founded on a simple belief: the countries facing the greatest climate risks should have the greatest access to solutions, finance, and technical support.'),
         ]);
     }
 }
