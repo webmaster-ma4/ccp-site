@@ -3,11 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#081C3A">
     <title>{{ $title ?? __('Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs') }}</title>
     <meta name="description" content="{{ $description ?? __('Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.') }}">
     <meta name="keywords" content="{{ __('climate, LDCs, climate finance, carbon markets, resilience, sustainable agriculture, low carbon economy, GCF, adaptation') }}">
     <meta name="robots" content="index,follow">
     <link rel="canonical" href="{{ url()->current() }}">
+
+    {{-- Hreflang for bilingual SEO (EN / FR) --}}
+    <link rel="alternate" hreflang="en" href="{{ preg_replace('#/(fr)(/|$)#', '/en$2', url()->current()) }}">
+    <link rel="alternate" hreflang="fr" href="{{ preg_replace('#/(en)(/|$)#', '/fr$2', url()->current()) }}">
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}">
+
+    {{-- Favicons --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.svg') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     {{-- Open Graph --}}
     <meta property="og:title" content="{{ $title ?? __('Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs') }}">
@@ -15,8 +27,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:site_name" content="{{ __('Climate Catalyst Prize') }}">
+    <meta property="og:locale" content="{{ app()->getLocale() === 'fr' ? 'fr_FR' : 'en_US' }}">
+    <meta property="og:locale:alternate" content="{{ app()->getLocale() === 'fr' ? 'en_US' : 'fr_FR' }}">
     <meta property="og:image" content="{{ asset('images/og-ccp.jpg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ClimateCatalystPrize">
     <meta name="twitter:title" content="{{ $title ?? __('Climate Catalyst Prize | Catalyzing Climate Solutions in LDCs') }}">
     <meta name="twitter:description" content="{{ $description ?? __('Climate Catalyst Prize is a global NGO helping Least Developed Countries build climate resilience, grow low-carbon economies, and access climate finance.') }}">
     <meta name="twitter:image" content="{{ asset('images/og-ccp.jpg') }}">

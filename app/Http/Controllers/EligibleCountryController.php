@@ -25,8 +25,10 @@ class EligibleCountryController extends Controller
             ->get();
 
         return view('map', [
-            'locale' => app()->getLocale(),
-            'countries' => $countries,
+            'locale'      => app()->getLocale(),
+            'countries'   => $countries,
+            'title'       => __('Eligible Countries Map') . ' | ' . __('Climate Catalyst Prize'),
+            'description' => __('Explore the Least Developed Countries eligible for Climate Catalyst Prize support. Interactive map of 46 LDCs across Africa, Asia, the Pacific and the Caribbean.'),
         ]);
     }
 }

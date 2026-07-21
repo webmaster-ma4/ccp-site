@@ -11,7 +11,9 @@ class ApplyController extends Controller
     public function __invoke(Request $request): View
     {
         return view('apply', [
-            'locale' => app()->getLocale(),
+            'locale'      => app()->getLocale(),
+            'title'       => __('Apply for Support') . ' | ' . __('Climate Catalyst Prize'),
+            'description' => __('Submit your climate project to Climate Catalyst Prize. We support organizations in Least Developed Countries with funding access, technical assistance, and carbon credit development.'),
         ]);
     }
 

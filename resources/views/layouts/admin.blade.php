@@ -3,12 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#081C3A">
+    <meta name="robots" content="noindex,nofollow">
     <title>@yield('title', 'Admin Dashboard') | {{ __('Climate Catalyst Prize') }}</title>
-    
+
+    {{-- Favicons --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.svg') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>

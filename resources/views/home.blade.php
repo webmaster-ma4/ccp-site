@@ -428,12 +428,11 @@
     </div>
     
     <div class="partners-logos animate-up">
-        <!-- Using placeholders for demo, replace with actual partner logos -->
-        <div class="partner-item"><img src="{{ asset('images/partners/gcf-logo.png') }}" alt="GCF"></div>
-        <div class="partner-item"><img src="{{ asset('images/partners/undp-logo.png') }}" alt="UNDP"></div>
-        <div class="partner-item"><img src="{{ asset('images/partners/worldbank-logo.png') }}" alt="World Bank"></div>
-        <div class="partner-item"><img src="{{ asset('images/partners/giz-logo.png') }}" alt="GIZ"></div>
-        <div class="partner-item"><img src="{{ asset('images/partners/unep-logo.png') }}" alt="UNEP"></div>
+        <div class="partner-item"><img src="{{ asset('images/partners/gcf-logo.svg') }}" alt="GCF"></div>
+        <div class="partner-item"><img src="{{ asset('images/partners/undp-logo.svg') }}" alt="UNDP"></div>
+        <div class="partner-item"><img src="{{ asset('images/partners/worldbank-logo.svg') }}" alt="World Bank"></div>
+        <div class="partner-item"><img src="{{ asset('images/partners/giz-logo.svg') }}" alt="GIZ"></div>
+        <div class="partner-item"><img src="{{ asset('images/partners/unep-logo.svg') }}" alt="UNEP"></div>
     </div>
 </section>
 

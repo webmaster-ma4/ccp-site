@@ -1,0 +1,22 @@
+{
+    "name": "Climate Catalyst Prize",
+    "short_name": "CCP",
+    "description": "Catalyzing Climate Solutions in Least Developed Countries",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#081C3A",
+    "theme_color": "#081C3A",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ]
+}

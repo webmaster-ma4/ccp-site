@@ -26,10 +26,16 @@ class BlogController extends Controller
         $posts = $query->get();
 
         return view('blog', [
-            'locale' => $locale,
-            'posts' => $posts,
-            'categories' => Category::all(),
+            'locale'          => $locale,
+            'posts'           => $posts,
+            'categories'      => Category::all(),
             'currentCategory' => $category,
+            'title'           => $category
+                ? $category->name . ' — ' . __('Blog') . ' | ' . __('Climate Catalyst Prize')
+                : __('Blog') . ' | ' . __('Climate Catalyst Prize'),
+            'description'     => $category
+                ? __('Articles about :category from Climate Catalyst Prize — insights, updates and resources on climate action in LDCs.', ['category' => $category->name])
+                : __('Insights, updates and resources on climate resilience, carbon markets, and sustainable development in Least Developed Countries.'),
         ]);
     }
 }

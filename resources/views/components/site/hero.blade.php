@@ -1,9 +1,10 @@
 <section class="hero">
     {{-- Background Media --}}
     <div class="hero-media">
-        {{-- For production, replace with actual video file --}}
         <video autoplay loop muted playsinline poster="{{ asset('images/hero-fallback.jpg') }}">
-            <source src="{{ asset('videos/climate-hero.mp4') }}" type="video/mp4">
+            @if(file_exists(public_path('videos/climate-hero.mp4')))
+                <source src="{{ asset('videos/climate-hero.mp4') }}" type="video/mp4">
+            @endif
         </video>
     </div>
     

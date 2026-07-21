@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#9A6E28"/>
+      <stop offset="35%"  stop-color="#CBA14B"/>
+      <stop offset="60%"  stop-color="#F7E7A1"/>
+      <stop offset="85%"  stop-color="#D4AA52"/>
+      <stop offset="100%" stop-color="#E3BE66"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" fill="#081C3A"/>
+
+  <!-- Letters CC in white -->
+  <text x="2" y="21" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">CC</text>
+
+  <!-- Letter P in gold -->
+  <text x="20" y="21" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="700" fill="url(#g)">P</text>
+
+  <!-- Gold swoosh accent -->
+  <path d="M 10 23 C 14 24, 19 23, 24 21 L 23 22 L 26 20 L 25 23 L 24 22 C 20 24, 15 25, 10 23 Z" fill="url(#g)"/>
+</svg>

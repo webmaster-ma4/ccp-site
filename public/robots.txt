@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /api/
+
+# Remplacer par l'URL de production avant mise en ligne
+Sitemap: https://www.climatecatalystprize.org/sitemap.xml
