@@ -23,7 +23,16 @@ Route::get('/switch-language/{locale}', function (string $locale) {
     return redirect()->route('home.locale', ['locale' => $locale]);
 })->name('locale.switch');
 
-Route::get('/', [HomeController::class, '__invoke'])->name('home');
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    // If a locale session exists, honour it
+    if (session()->has('locale') && in_array(session('locale'), ['en', 'fr'])) {
+        return redirect()->route('home.locale', ['locale' => session('locale')]);
+    }
+    // Detect from browser Accept-Language header
+    $preferred = substr($request->server('HTTP_ACCEPT_LANGUAGE', 'en'), 0, 2);
+    $locale = ($preferred === 'fr') ? 'fr' : 'en';
+    return redirect()->route('home.locale', ['locale' => $locale]);
+})->name('home');
 Route::get('/{locale}', [HomeController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('home.locale');
 Route::get('/{locale}/about', [AboutController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('about');
 Route::get('/{locale}/services', [ServicesController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('services');
@@ -31,6 +40,7 @@ Route::get('/{locale}/faq', [FaqController::class, '__invoke'])->whereIn('locale
 Route::get('/{locale}/contact', [ContactController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('contact');
 Route::post('/{locale}/contact', [ContactController::class, 'send'])->whereIn('locale', ['en', 'fr'])->name('contact.send');
 Route::get('/{locale}/apply', [App\Http\Controllers\ApplyController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('apply');
+Route::post('/{locale}/apply', [App\Http\Controllers\ApplyController::class, 'store'])->whereIn('locale', ['en', 'fr'])->name('apply.store');
 Route::get('/{locale}/map', [App\Http\Controllers\EligibleCountryController::class, 'map'])->whereIn('locale', ['en', 'fr'])->name('map');
 Route::get('/{locale}/blog', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog');
 Route::get('/{locale}/blog/category/{categorySlug}', [BlogController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('blog.category');

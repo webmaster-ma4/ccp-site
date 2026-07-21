@@ -31,8 +31,15 @@
                 </p>
             </div>
 
-            <form action="#" method="POST">
-                
+            @if(session('success'))
+                <div style="background: #ECFDF5; color: #059669; padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid #10B981; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <form action="{{ route('apply.store', ['locale' => $locale]) }}" method="POST">
+                @csrf
                 {{-- STEP 1: ORGANIZATION --}}
                 <div style="margin-bottom: 2.5rem;">
                     <h4 style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 800; color: #C8A04D; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #EEF1F5; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
@@ -42,16 +49,18 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
                         <div class="form-group" style="margin-bottom: 0;">
                             <label class="form-label" for="org_name">{{ __('Organization Name') }}</label>
-                            <input type="text" id="org_name" name="org_name" class="form-input" required>
+                            <input type="text" id="org_name" name="org_name" class="form-input" value="{{ old('org_name') }}" required>
+                            @error('org_name')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                         <div class="form-group" style="margin-bottom: 0;">
                             <label class="form-label" for="org_type">{{ __('Type of Entity') }}</label>
                             <select id="org_type" name="org_type" class="form-select" required>
                                 <option value="">{{ __('Select type...') }}</option>
-                                <option value="government">{{ __('Government Agency / Ministry') }}</option>
-                                <option value="private">{{ __('Private Sector Company') }}</option>
-                                <option value="ngo">{{ __('NGO / Non-Profit') }}</option>
+                                <option value="government" {{ old('org_type') === 'government' ? 'selected' : '' }}>{{ __('Government Agency / Ministry') }}</option>
+                                <option value="private" {{ old('org_type') === 'private' ? 'selected' : '' }}>{{ __('Private Sector Company') }}</option>
+                                <option value="ngo" {{ old('org_type') === 'ngo' ? 'selected' : '' }}>{{ __('NGO / Non-Profit') }}</option>
                             </select>
+                            @error('org_type')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                     </div>
                     

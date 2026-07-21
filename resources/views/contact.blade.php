@@ -28,27 +28,42 @@
             <div class="animate-left">
                 <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1.5rem;">{{ __('Send a Message') }}</h2>
                 <div style="background: #FFFFFF; padding: 2.5rem; border-radius: 12px; border: 1px solid #E0E6ED; box-shadow: 0 10px 30px rgba(8,28,58,0.05);">
-                    <form action="#" method="POST">
+                    @if(session('success'))
+                        <div style="background: #ECFDF5; color: #059669; padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid #10B981; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <form action="{{ route('contact.send', ['locale' => $locale]) }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <label class="form-label" for="name">{{ __('Full Name') }}</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                            <label class="form-label" for="name">{{ __('Full Name') }} <span style="color:#C8A04D;">*</span></label>
+                            <input type="text" id="name" name="name" class="form-input" value="{{ old('name') }}" required>
+                            @error('name')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="email">{{ __('Email Address') }}</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <label class="form-label" for="organization">{{ __('Organization') }} <span style="color:#C8A04D;">*</span></label>
+                            <input type="text" id="organization" name="organization" class="form-input" value="{{ old('organization') }}" required>
+                            @error('organization')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="subject">{{ __('Subject') }}</label>
-                            <select id="subject" name="subject" class="form-select" required>
-                                <option value="">{{ __('Select a topic...') }}</option>
-                                <option value="partnership">{{ __('Partnership Inquiry') }}</option>
-                                <option value="media">{{ __('Media Request') }}</option>
-                                <option value="general">{{ __('General Information') }}</option>
-                            </select>
+                            <label class="form-label" for="email">{{ __('Email Address') }} <span style="color:#C8A04D;">*</span></label>
+                            <input type="email" id="email" name="email" class="form-input" value="{{ old('email') }}" required>
+                            @error('email')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="message">{{ __('Your Message') }}</label>
-                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                            <label class="form-label" for="phone">{{ __('Phone (Optional)') }}</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" value="{{ old('phone') }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="country">{{ __('Country') }} <span style="color:#C8A04D;">*</span></label>
+                            <input type="text" id="country" name="country" class="form-input" value="{{ old('country') }}" required>
+                            @error('country')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">{{ __('Your Message') }} <span style="color:#C8A04D;">*</span></label>
+                            <textarea id="message" name="message" class="form-textarea" required>{{ old('message') }}</textarea>
+                            @error('message')<p style="color:#DC2626; font-size:0.75rem; margin-top:0.25rem;">{{ $message }}</p>@enderror
                         </div>
                         <button type="submit" class="btn btn-navy w-full" style="width: 100%; justify-content: center;">
                             {{ __('Send Message') }}
