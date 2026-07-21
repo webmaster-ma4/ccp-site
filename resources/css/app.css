@@ -560,6 +560,101 @@ img {
 }
 
 /* ============================================================
+   PAGE HERO & BREADCRUMB (Institutional Dark Navy System)
+   ============================================================ */
+.page-hero {
+    position: relative;
+    background: linear-gradient(135deg, #050E1D 0%, #081C3A 55%, #10294F 100%);
+    padding-top: 9.5rem;
+    padding-bottom: 5.5rem;
+    color: #FFFFFF;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(200, 160, 77, 0.2);
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 100%;
+    background: radial-gradient(circle, rgba(200, 160, 77, 0.09) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.page-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #C8A04D;
+    margin-bottom: 1.25rem;
+}
+
+.page-hero-eyebrow::before,
+.page-hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: #C8A04D;
+}
+
+.page-hero-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin: 0 0 1.25rem 0;
+}
+
+.page-hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+    max-width: 680px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.breadcrumb {
+    background: #FAFBFC;
+    border-bottom: 1px solid #E0E6ED;
+    padding: 0.85rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: #5E7590;
+    justify-content: center;
+}
+
+.breadcrumb a {
+    color: #081C3A;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #C8A04D;
+}
+
+.breadcrumb-sep {
+    color: #C8D4E0;
+}
+
+/* ============================================================
    HERO SECTION
    ============================================================ */
 .hero {
@@ -2698,7 +2793,7 @@ img {
         border-radius: 8px;
     }
 
-    .admin-table th, 
+    .admin-table th,
     .admin-table td {
         padding: 0.75rem 0.85rem !important;
     }

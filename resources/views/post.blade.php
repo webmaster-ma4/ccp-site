@@ -3,27 +3,36 @@
 @section('content')
 
 {{-- POST HEADER --}}
-<section class="section-py" style="background: #F6F8FA; padding-top: 10rem; border-bottom: 1px solid #E0E6ED;">
+<section class="page-hero" style="padding-top: 10rem; padding-bottom: 4.5rem;">
     <div class="container-ccp">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="animate-up">
-            <span class="eyebrow" style="margin-bottom: 1.5rem;">{{ $post->category->name ?? __('Insight') }}</span>
-            <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: #081C3A; line-height: 1.1; margin-bottom: 1.5rem;">
+        <div style="max-width: 860px; margin: 0 auto; text-align: center;" class="animate-up">
+            <span class="page-hero-eyebrow">{{ $post->category->name ?? __('Insight') }}</span>
+            <h1 class="page-hero-title" style="margin-bottom: 1.5rem;">
                 {{ $post->title }}
             </h1>
-            <div style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #5E7590; display: flex; align-items: center; justify-content: center; gap: 1rem;">
-                <span style="display: flex; align-items: center; gap: 0.4rem;">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <div style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                <span style="display: flex; align-items: center; gap: 0.45rem;">
+                    <svg width="16" height="16" fill="none" stroke="#C8A04D" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     {{ optional($post->published_at)->format('F j, Y') }}
                 </span>
-                <span style="color: #C8D4E0;">|</span>
-                <span style="display: flex; align-items: center; gap: 0.4rem;">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span style="color: rgba(255, 255, 255, 0.3);">|</span>
+                <span style="display: flex; align-items: center; gap: 0.45rem;">
+                    <svg width="16" height="16" fill="none" stroke="#C8A04D" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     {{ __('5 min read') }}
                 </span>
             </div>
         </div>
     </div>
 </section>
+
+{{-- BREADCRUMB --}}
+<div class="breadcrumb">
+    <a href="{{ route('home', ['locale' => $locale]) }}">{{ __('Accueil') }}</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="{{ route('blog', ['locale' => $locale]) }}">{{ __('Insights & Publications') }}</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>{{ Str::limit($post->title, 40) }}</span>
+</div>
 
 {{-- POST CONTENT --}}
 <section class="section-py" style="background: #FFFFFF;">
