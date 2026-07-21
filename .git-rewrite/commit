@@ -1,0 +1,6 @@
+tree bdc6ffb258df521441c5cb950d5ee5a807db6c01
+parent bbebf31db5fcdb7b242b08b64f0b7af41c5a9d95
+author webmaster-ma4 <casadwebmaster@gmail.com> 1784650718 +0100
+committer webmaster-ma4 <casadwebmaster@gmail.com> 1784650718 +0100
+
+feat: initialize application frontend, core layouts, and site navigation components

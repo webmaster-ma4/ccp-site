@@ -1,0 +1,3 @@
+feat(i18n): add EN/FR translation for model replication messaging
+
+Added new translation entry for model replication messaging to both English and French locale files, supporting updated content in the "How We Support You" site section. Also fixed missing trailing comma on the preceding translation entry and added missing end-of-file newline for both JSON files to ensure valid formatting.
