@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 195" fill="none" role="img" aria-label="Climate Catalyst Prize">
+  <defs>
+    <linearGradient id="goldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8D48A"/>
+      <stop offset="40%" stop-color="#C8A04D"/>
+      <stop offset="100%" stop-color="#9A7628"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C8A04D" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#C8A04D"/>
+      <stop offset="70%" stop-color="#E4C97A"/>
+      <stop offset="100%" stop-color="#C8A04D" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&amp;display=swap');
+      .ccp-navy { fill: #081C3A; }
+      .ccp-gold { fill: url(#goldMain); }
+      .ccp-wordmark { fill: #081C3A; font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 600; letter-spacing: 0.18em; }
+      .ccp-tagline { fill: #C8A04D; font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 400; letter-spacing: 0.18em; }
+    </style>
+  </defs>
+
+  <!-- ——— Monogramme CCP ——— -->
+  <!-- C gauche -->
+  <text x="8" y="115"
+    font-family="'Cormorant Garamond','Times New Roman',serif"
+    font-size="120" font-weight="700" fill="#081C3A" letter-spacing="-3">C</text>
+
+  <!-- C droite -->
+  <text x="115" y="115"
+    font-family="'Cormorant Garamond','Times New Roman',serif"
+    font-size="120" font-weight="700" fill="#081C3A" letter-spacing="-3">C</text>
+
+  <!-- P en or -->
+  <text x="222" y="115"
+    font-family="'Cormorant Garamond','Times New Roman',serif"
+    font-size="120" font-weight="700" fill="url(#goldMain)">P</text>
+
+  <!-- ——— Swoosh / arc doré sous le monogramme ——— -->
+  <!-- Ligne principale qui part de sous le C gauche, suit doucement vers la droite et remonte vers le P -->
+  <path d="M 18 126 C 90 148 195 143 310 118"
+    stroke="url(#goldMain)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- ——— Flèche de croissance (Growth Arrow) associée au P ——— -->
+  <!-- Courbe qui démarre dans le corps du P, file vers le haut-droite -->
+  <path d="M 275 75 C 295 58 318 40 348 18"
+    stroke="url(#goldMain)" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+
+  <!-- Pointe de flèche -->
+  <path d="M 348 18 L 333 24 M 348 18 L 354 33"
+    stroke="url(#goldMain)" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ——— Wordmark "CLIMATE CATALYST PRIZE" ——— -->
+  <text x="290" y="154"
+    font-family="'Cormorant Garamond','Times New Roman',serif"
+    font-size="14" font-weight="600" fill="#081C3A"
+    text-anchor="middle" letter-spacing="7">CLIMATE CATALYST PRIZE</text>
+
+  <!-- ——— Tagline avec tirets or ——— -->
+  <line x1="48" y1="172" x2="72" y2="172" stroke="#C8A04D" stroke-width="1.3" stroke-linecap="round"/>
+  <text x="290" y="176"
+    font-family="'Cormorant Garamond','Times New Roman',serif"
+    font-size="8.5" fill="#C8A04D"
+    text-anchor="middle" letter-spacing="2.5">CATALYZING CLIMATE SOLUTIONS. TRANSFORMING FUTURES.</text>
+  <line x1="508" y1="172" x2="532" y2="172" stroke="#C8A04D" stroke-width="1.3" stroke-linecap="round"/>
+</svg>

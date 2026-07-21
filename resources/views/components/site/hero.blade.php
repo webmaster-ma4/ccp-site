@@ -1,25 +1,48 @@
-<section class="hero-wrapper" id="hero">
-    <div class="hero-image"></div>
+<section class="hero">
+    {{-- Background Media --}}
+    <div class="hero-media">
+        {{-- For production, replace with actual video file --}}
+        <video autoplay loop muted playsinline poster="{{ asset('images/hero-fallback.jpg') }}">
+            <source src="{{ asset('videos/climate-hero.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+    
+    {{-- Overlay Gradient --}}
     <div class="hero-overlay"></div>
+
+    {{-- Content --}}
     <div class="hero-content">
-        <div style="max-width: 800px;">
-            <div class="hero-label animate-up visible">{{ __('CLIMATE CATALYST PRIZE') }}</div>
-            <h1 class="hero-title animate-up visible delay-2">
-                {{ __('Catalyzing climate solutions in Least Developed Countries') }}
-            </h1>
-            <p class="hero-description animate-up visible delay-3">
-                {{ __('We support governments, NGOs, and institutions in LDCs to build climate resilience, access climate finance, and implement measurable adaptation and mitigation projects.') }}
-            </p>
-            <div class="animate-up visible delay-4" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;">
-                <a href="#apply" class="btn btn-primary">
-                    {{ __('Apply for support') }}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-                <a href="#services" class="btn btn-secondary">
-                    {{ __('Our services') }}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-                </a>
-            </div>
+        <div class="animate-up delay-1">
+            <span class="hero-eyebrow">{{ __('Empowering Emerging Economies') }}</span>
         </div>
+        
+        <h1 class="hero-title animate-up delay-2">
+            {{ __('Catalyzing Climate Solutions.') }}<br>
+            <span style="color: #C8A04D;">{{ __('Transforming Futures.') }}</span>
+        </h1>
+        
+        <p class="hero-subtitle animate-up delay-3">
+            {{ __('We partner with Least Developed Countries to build climate resilience, unlock climate finance, and accelerate the transition to sustainable, low-carbon economies.') }}
+        </p>
+        
+        <div class="hero-actions animate-up delay-4">
+            <a href="{{ route('apply', ['locale' => app()->getLocale()]) }}" class="btn btn-gold btn-lg">
+                {{ __('Apply for Funding') }}
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+            <a href="{{ route('about', ['locale' => app()->getLocale()]) }}" class="btn btn-outline-white btn-lg">
+                {{ __('Discover Our Impact') }}
+            </a>
+        </div>
+    </div>
+
+    {{-- Scroll Indicator --}}
+    <div class="scroll-indicator">
+        {{ __('Scroll to explore') }}
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
     </div>
 </section>

@@ -1,134 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('components.site.breadcrumb')
 
-    <main class="page-content">
-        <section class="hero" style="grid-template-columns: 1fr;">
-            <div>
-                <span class="eyebrow">{{ __("Our Story") }}</span>
-                <h1>{{ __("An international NGO dedicated to climate action in the world's most vulnerable countries") }}</h1>
-                <p>{{ __("Climate Catalyst Prize works exclusively with Least Developed Countries to build climate resilience, access climate finance, and implement measurable adaptation and mitigation projects.") }}</p>
-            </div>
-        </section>
+{{-- PAGE HERO --}}
+<section class="page-hero">
+    <div class="animate-up">
+        <span class="page-hero-eyebrow">{{ __('Organization') }}</span>
+        <h1 class="page-hero-title">{{ __('Who We Are') }}</h1>
+        <p class="page-hero-subtitle">
+            {{ __('Climate Catalyst Prize is dedicated to accelerating the transition to a sustainable, climate-resilient future for the world\'s most vulnerable nations.') }}
+        </p>
+    </div>
+</section>
 
-        <!-- Mission -->
-        <section class="section">
-            <div class="section-heading">
-                <div>
-                    <h2>{{ __("Our Mission") }}</h2>
-                    <p>{{ __("To catalyze climate solutions in LDCs by providing the tools, finance, and partnerships needed to transform futures.") }}</p>
-                </div>
-            </div>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>{{ __("Who We Are") }}</h3>
-                    <p>{{ __("We are an international NGO supporting Least Developed Countries through technical assistance, project development, and climate finance access. We bridge the gap between climate ambition and funded action.") }}</p>
-                </article>
-                <article class="card">
-                    <h3>{{ __("Our Promise") }}</h3>
-                    <p>{{ __("We don't just write reports. We catalyze. That means turning plans into funded projects. Turning farms into climate-smart systems. Turning carbon potential into real revenue. Turning adaptation ideas into infrastructure that protects lives.") }}</p>
-                </article>
-                <article class="card">
-                    <h3>{{ __("Our Focus") }}</h3>
-                    <p>{{ __("We focus on Least Developed Countries — where climate change hits first and hardest, but where innovation and resilience also run deepest. CCP works as a bridge between LDC governments, local NGOs, municipalities, and global climate finance.") }}</p>
-                </article>
-            </div>
-        </section>
+{{-- BREADCRUMB --}}
+<div class="breadcrumb">
+    <a href="{{ route('home', ['locale' => $locale]) }}">{{ __('Home') }}</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>{{ __('Who We Are') }}</span>
+</div>
 
-        <!-- Approach -->
-        <section class="section" style="background: #FFFFFF;">
-            <div class="section-heading">
-                <div>
-                    <h2>{{ __("Our Approach") }}</h2>
-                    <p>{{ __("A proven methodology that takes climate projects from concept to implementation") }}</p>
+{{-- OUR STORY --}}
+<section class="section-py">
+    <div class="container-ccp">
+        <div class="about-grid">
+            <div class="animate-left">
+                <span class="eyebrow">{{ __('Our Origin') }}</span>
+                <h2 class="section-title">{{ __('Born from a Need for Targeted Action') }}</h2>
+                <div style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.8;">
+                    <p style="margin-bottom: 1.5rem;">
+                        {{ __('Established in 2020 by a consortium of climate finance experts and international development practitioners, the Climate Catalyst Prize emerged to address a critical market failure: the systemic underinvestment in climate projects within Least Developed Countries (LDCs).') }}
+                    </p>
+                    <p>
+                        {{ __('While global climate finance has grown exponentially, only a fraction reaches the nations that are most disproportionately affected by climate change and have the least capacity to adapt. We were founded to bridge this gap, serving as an accelerator and a trusted intermediary between LDCs and international capital markets.') }}
+                    </p>
                 </div>
             </div>
-            <div class="methodology-steps">
-                <div class="methodology-step animate-up">
-                    <div class="methodology-line"></div>
-                    <div class="methodology-content">
-                        <div class="methodology-number">1</div>
-                        <div>
-                            <h4>{{ __("Identify Opportunities") }}</h4>
-                            <p>{{ __("We work with stakeholders to identify high-impact climate opportunities aligned with national priorities") }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="methodology-step animate-up delay-2">
-                    <div class="methodology-line"></div>
-                    <div class="methodology-content">
-                        <div class="methodology-number">2</div>
-                        <div>
-                            <h4>{{ __("Design Projects") }}</h4>
-                            <p>{{ __("Together we develop robust project designs with clear outcomes, budgets, and implementation plans") }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="methodology-step animate-up delay-4">
-                    <div class="methodology-line"></div>
-                    <div class="methodology-content">
-                        <div class="methodology-number">3</div>
-                        <div>
-                            <h4>{{ __("Secure Climate Finance") }}</h4>
-                            <p>{{ __("We prepare funding proposals and connect projects to GCF, GEF, Adaptation Fund, and other sources") }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="methodology-step animate-up delay-6">
-                    <div class="methodology-line"></div>
-                    <div class="methodology-content">
-                        <div class="methodology-number">4</div>
-                        <div>
-                            <h4>{{ __("Implement") }}</h4>
-                            <p>{{ __("We provide ongoing technical support during implementation to ensure quality and timeliness") }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="methodology-step animate-up">
-                    <div class="methodology-line"></div>
-                    <div class="methodology-content">
-                        <div class="methodology-number">5</div>
-                        <div>
-                            <h4>{{ __("Measure Impact") }}</h4>
-                            <p>{{ __("Robust M&E frameworks track outcomes, learn, and demonstrate results to stakeholders") }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="methodology-step animate-up delay-2">
-                    <div class="methodology-content">
-                        <div class="methodology-number">6</div>
-                        <div>
-                            <h4>{{ __("Scale") }}</h4>
-                            <p>{{ __("Successful models are documented and replicated across regions and sectors") }}</p>
-                        </div>
-                    </div>
+            <div class="animate-right">
+                <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(8,28,58,0.1);">
+                    <img src="{{ asset('images/about-story.jpg') }}" alt="CCP field work" style="width: 100%; height: auto; display: block;">
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Values -->
-        <section class="section">
-            <div class="section-heading">
-                <div>
-                    <h2>{{ __("Why Organizations Trust Us") }}</h2>
-                    <p>{{ __("Built on expertise, transparency, and long-term partnership") }}</p>
+{{-- VISION & MISSION --}}
+<section class="section-py" style="background: #F6F8FA;">
+    <div class="container-ccp">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+            
+            <div style="background: #FFFFFF; padding: 3rem; border-radius: 12px; border: 1px solid #E0E6ED;" class="animate-up delay-1">
+                <div style="width: 54px; height: 54px; border-radius: 50%; background: rgba(200,160,77,0.1); color: #C8A04D; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                 </div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #081C3A; margin-bottom: 1rem;">{{ __('Our Vision') }}</h3>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.75;">
+                    {{ __('A world where economic development and environmental sustainability are intrinsically linked, and where the most vulnerable nations have equitable access to the resources needed to thrive in a changing climate.') }}
+                </p>
             </div>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>{{ __("Climate Finance Expertise") }}</h3>
-                    <p>{{ __("Deep knowledge of GCF, GEF, Adaptation Fund, and bilateral funding mechanisms. We know what it takes to secure climate finance for LDC projects.") }}</p>
-                </article>
-                <article class="card">
-                    <h3>{{ __("Long-Term Capacity Building") }}</h3>
-                    <p>{{ __("We don't just submit proposals. We build lasting local capacity so organizations can continue to access funding and implement projects independently.") }}</p>
-                </article>
-                <article class="card">
-                    <h3>{{ __("Partnership Approach") }}</h3>
-                    <p>{{ __("We work as an extension of your team, aligning with national priorities and ensuring projects deliver real, measurable impact for communities.") }}</p>
-                </article>
+            
+            <div style="background: #FFFFFF; padding: 3rem; border-radius: 12px; border: 1px solid #E0E6ED;" class="animate-up delay-2">
+                <div style="width: 54px; height: 54px; border-radius: 50%; background: rgba(8,28,58,0.1); color: #081C3A; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #081C3A; margin-bottom: 1rem;">{{ __('Our Mission') }}</h3>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.75;">
+                    {{ __('To catalyze high-impact climate action in LDCs by providing technical assistance, structuring bankable projects, and unlocking international climate finance for adaptation and mitigation initiatives.') }}
+                </p>
             </div>
-        </section>
-    </main>
+            
+        </div>
+    </div>
+</section>
+
+{{-- TEAM (PLACEHOLDER) --}}
+<section class="section-py text-center">
+    <div class="container-ccp">
+        <span class="eyebrow">{{ __('Leadership') }}</span>
+        <h2 class="section-title">{{ __('Our Executive Team') }}</h2>
+        <p class="section-lead" style="margin: 0 auto 4rem;">
+            {{ __('Guided by a multidisciplinary team of global experts in climate science, finance, and international policy.') }}
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2.5rem; text-align: left;">
+            @for($i=1; $i<=4; $i++)
+            <div class="animate-up delay-{{ $i }}">
+                <div style="background: #E0E6ED; aspect-ratio: 1; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden;">
+                    <img src="{{ asset('images/team-'.$i.'.jpg') }}" alt="Team Member" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin-bottom: 0.2rem;">Jane Doe</h4>
+                <div style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: #C8A04D; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8rem;">Executive Director</div>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #5E7590; line-height: 1.6;">20+ years of experience in international climate finance and policy negotiations with the UN.</p>
+            </div>
+            @endfor
+        </div>
+    </div>
+</section>
+
 @endsection

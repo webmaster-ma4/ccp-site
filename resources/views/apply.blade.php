@@ -1,180 +1,139 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('components.site.breadcrumb')
 
-    <main class="page-content">
-        <section class="hero" style="grid-template-columns: 1fr;">
-            <div>
-                <span class="eyebrow">{{ __('Apply for Support') }}</span>
-                <h1>{{ __('Submit Your Climate Project') }}</h1>
-                <p>{{ __('We work with governments, NGOs, and institutions in Least Developed Countries to design, fund, and implement climate projects. Tell us about your initiative.') }}</p>
-            </div>
-        </section>
+{{-- PAGE HERO --}}
+<section class="page-hero">
+    <div class="animate-up">
+        <span class="page-hero-eyebrow">{{ __('Apply') }}</span>
+        <h1 class="page-hero-title">{{ __('Project Funding Portal') }}</h1>
+        <p class="page-hero-subtitle">
+            {{ __('Submit your climate initiative for technical assistance, structuring, and capital matching.') }}
+        </p>
+    </div>
+</section>
 
-        <!-- Workflow -->
-        <section class="section">
-            <div class="section-heading">
-                <div>
-                    <h2>{{ __('How It Works') }}</h2>
-                    <p>{{ __('Our partnership pathway is designed to move efficiently from concept to implementation.') }}</p>
-                </div>
-            </div>
-            <div class="workflow-grid">
-                <div class="workflow-step">
-                    <div class="workflow-number">1</div>
-                    <h3>{{ __('Submit Project') }}</h3>
-                    <p>{{ __('Share your climate project concept, context, and expected outcomes.') }}</p>
-                </div>
-                <div class="workflow-step">
-                    <div class="workflow-number">2</div>
-                    <h3>{{ __('Eligibility Review') }}</h3>
-                    <p>{{ __('We confirm alignment with LDC priorities and our areas of support.') }}</p>
-                </div>
-                <div class="workflow-step">
-                    <div class="workflow-number">3</div>
-                    <h3>{{ __('Technical Assessment') }}</h3>
-                    <p>{{ __('Our team evaluates feasibility, impact potential, and funding pathways.') }}</p>
-                </div>
-                <div class="workflow-step">
-                    <div class="workflow-number">4</div>
-                    <h3>{{ __('Partnership Discussion') }}</h3>
-                    <p>{{ __('We discuss roles, resources, and co-design the implementation plan.') }}</p>
-                </div>
-                <div class="workflow-step">
-                    <div class="workflow-number">5</div>
-                    <h3>{{ __('Project Development') }}</h3>
-                    <p>{{ __('Together we develop proposals, conduct studies, and prepare documentation.') }}</p>
-                </div>
-                <div class="workflow-step">
-                    <div class="workflow-number">6</div>
-                    <h3>{{ __('Funding Pathway') }}</h3>
-                    <p>{{ __('We connect you to climate finance sources and support submission.') }}</p>
-                </div>
-            </div>
-        </section>
+{{-- BREADCRUMB --}}
+<div class="breadcrumb">
+    <a href="{{ route('home', ['locale' => $locale]) }}">{{ __('Home') }}</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>{{ __('Apply for Funding') }}</span>
+</div>
 
-        <!-- Eligibility & Support -->
-        <section class="section">
-            <div class="card-grid">
-                <article class="card">
-                    <h3>{{ __('Eligibility Criteria') }}</h3>
-                    <ul class="check-list">
-                        <li>{{ __('Organization based in or operating primarily in an LDC') }}</li>
-                        <li>{{ __('Clear climate adaptation, mitigation, or resilience objective') }}</li>
-                        <li>{{ __('Commitment to measurable outcomes and reporting') }}</li>
-                        <li>{{ __('Willingness to collaborate with local and national stakeholders') }}</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <h3>{{ __('Supported Project Types') }}</h3>
-                    <ul class="check-list">
-                        <li>{{ __('Climate resilience and adaptation plans') }}</li>
-                        <li>{{ __('Sustainable agriculture and food security') }}</li>
-                        <li>{{ __('Low-carbon development and renewable energy') }}</li>
-                        <li>{{ __('Carbon market project development') }}</li>
-                        <li>{{ __('Climate finance readiness and proposal development') }}</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <h3>{{ __('Support We Provide') }}</h3>
-                    <ul class="check-list">
-                        <li>{{ __('Technical assistance and project design') }}</li>
-                        <li>{{ __('Feasibility studies and baseline assessments') }}</li>
-                        <li>{{ __('Access to climate finance mechanisms') }}</li>
-                        <li>{{ __('Capacity building and knowledge transfer') }}</li>
-                        <li>{{ __('Long-term implementation guidance') }}</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <!-- Application Form -->
-        <section class="section">
-            <div class="section-heading">
-                <div>
-                    <h2>{{ __('Application Form') }}</h2>
-                    <p>{{ __('Complete the form below to start the conversation. We will respond within 10 business days.') }}</p>
-                </div>
+<section class="section-py" style="background: #F6F8FA;">
+    <div class="container-ccp">
+        
+        <div style="max-width: 800px; margin: 0 auto; background: #FFFFFF; border-radius: 12px; border: 1px solid #E0E6ED; box-shadow: 0 16px 40px rgba(8,28,58,0.06); padding: 3.5rem;">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem;">{{ __('Initial Screening Application') }}</h2>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #5E7590; line-height: 1.6;">
+                    {{ __('Please provide a high-level overview of your project. Our technical committee reviews all submissions within 14 business days.') }}
+                </p>
             </div>
 
-            @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-
-            <div class="card">
-                <form class="contact-form" method="POST" action="{{ route('contact.send', ['locale' => $locale]) }}">
-                    @csrf
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="name" class="form-label">{{ __('Full Name') }}</label>
-                            <input type="text" id="name" name="name" class="form-control" required maxlength="255">
-                            @error('name')<div class="form-error">{{ $message }}</div>@enderror
+            <form action="#" method="POST">
+                
+                {{-- STEP 1: ORGANIZATION --}}
+                <div style="margin-bottom: 2.5rem;">
+                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 800; color: #C8A04D; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #EEF1F5; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                        {{ __('1. Organization Details') }}
+                    </h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="org_name">{{ __('Organization Name') }}</label>
+                            <input type="text" id="org_name" name="org_name" class="form-input" required>
                         </div>
-
-                        <div class="form-group">
-                            <label for="organization" class="form-label">{{ __('Organization') }}</label>
-                            <input type="text" id="organization" name="organization" class="form-control" required maxlength="255">
-                            @error('organization')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">{{ __('Email') }}</label>
-                            <input type="email" id="email" name="email" class="form-control" required maxlength="255">
-                            @error('email')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone" class="form-label">{{ __('Phone') }}</label>
-                            <input type="text" id="phone" name="phone" class="form-control" maxlength="50">
-                            @error('phone')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="country" class="form-label">{{ __('Country') }}</label>
-                            <input type="text" id="country" name="country" class="form-control" required maxlength="255">
-                            @error('country')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="organization_type" class="form-label">{{ __('Organization Type') }}</label>
-                            <select id="organization_type" name="organization_type" class="form-control" required>
-                                <option value="">{{ __('Select type') }}</option>
-                                <option value="government">{{ __('Government / Ministry') }}</option>
-                                <option value="municipality">{{ __('Municipality / City') }}</option>
-                                <option value="ngo">{{ __('NGO / Civil Society') }}</option>
-                                <option value="academic">{{ __('Academic / Research') }}</option>
-                                <option value="private">{{ __('Private Sector') }}</option>
-                                <option value="other">{{ __('Other') }}</option>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="org_type">{{ __('Type of Entity') }}</label>
+                            <select id="org_type" name="org_type" class="form-select" required>
+                                <option value="">{{ __('Select type...') }}</option>
+                                <option value="government">{{ __('Government Agency / Ministry') }}</option>
+                                <option value="private">{{ __('Private Sector Company') }}</option>
+                                <option value="ngo">{{ __('NGO / Non-Profit') }}</option>
                             </select>
-                            @error('organization_type')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="project_title" class="form-label">{{ __('Project Title') }}</label>
-                            <input type="text" id="project_title" name="project_title" class="form-control" required maxlength="255" placeholder="{{ __('e.g., Coastal Resilience Initiative in Madagascar') }}">
-                            @error('project_title')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="project_description" class="form-label">{{ __('Project Description') }}</label>
-                            <textarea id="project_description" name="project_description" class="form-control" rows="5" required placeholder="{{ __('Describe the climate challenge, proposed solution, target beneficiaries, and expected outcomes.') }}"></textarea>
-                            @error('project_description')<div class="form-error">{{ $message }}</div>@enderror
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="message" class="form-label">{{ __('Additional Information') }}</label>
-                            <textarea id="message" name="message" class="form-control" rows="4" placeholder="{{ __('Any specific support needed, timeline, or questions.') }}"></textarea>
-                            @error('message')<div class="form-error">{{ $message }}</div>@enderror
                         </div>
                     </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">{{ __('Submit Application') }}</button>
-                        <p class="form-note">{{ __('We will review your submission and respond within 10 business days.') }}</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="contact_name">{{ __('Primary Contact Name') }}</label>
+                            <input type="text" id="contact_name" name="contact_name" class="form-input" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="contact_email">{{ __('Official Email') }}</label>
+                            <input type="email" id="contact_email" name="contact_email" class="form-input" required>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </section>
-    </main>
+                </div>
+
+                {{-- STEP 2: PROJECT --}}
+                <div style="margin-bottom: 2.5rem;">
+                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 800; color: #C8A04D; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #EEF1F5; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                        {{ __('2. Project Overview') }}
+                    </h4>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="project_title">{{ __('Project Title') }}</label>
+                        <input type="text" id="project_title" name="project_title" class="form-input" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="country">{{ __('Target Country (LDC)') }}</label>
+                            <select id="country" name="country" class="form-select" required>
+                                <option value="">{{ __('Select LDC...') }}</option>
+                                <option value="sn">Senegal</option>
+                                <option value="rw">Rwanda</option>
+                                <option value="bd">Bangladesh</option>
+                                <option value="mg">Madagascar</option>
+                                <option value="other">{{ __('Other LDC') }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="sector">{{ __('Primary Sector') }}</label>
+                            <select id="sector" name="sector" class="form-select" required>
+                                <option value="">{{ __('Select sector...') }}</option>
+                                <option value="energy">{{ __('Renewable Energy / Energy Access') }}</option>
+                                <option value="agriculture">{{ __('Sustainable Agriculture / Forestry') }}</option>
+                                <option value="infrastructure">{{ __('Resilient Infrastructure / Water') }}</option>
+                                <option value="carbon">{{ __('Carbon Market Development') }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="funding">{{ __('Estimated Funding Required (USD)') }}</label>
+                        <select id="funding" name="funding" class="form-select" required>
+                            <option value="">{{ __('Select range...') }}</option>
+                            <option value="under-1m">{{ __('Under $1 Million') }}</option>
+                            <option value="1m-5m">{{ __('$1M - $5M') }}</option>
+                            <option value="5m-15m">{{ __('$5M - $15M') }}</option>
+                            <option value="over-15m">{{ __('Over $15 Million') }}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="description">{{ __('Executive Summary (Max 500 words)') }}</label>
+                        <textarea id="description" name="description" class="form-textarea" placeholder="{{ __('Describe the problem, proposed solution, and expected climate impact...') }}" required></textarea>
+                    </div>
+                </div>
+
+                {{-- SUBMIT --}}
+                <div style="background: rgba(200,160,77,0.05); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(200,160,77,0.2); margin-bottom: 2.5rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #5E7590; line-height: 1.6;">
+                    <strong>{{ __('Note:') }}</strong> {{ __('If your project passes the initial screening, you will be invited to submit a full technical proposal along with financial models and ESG frameworks.') }}
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-gold btn-lg w-full" style="width: 100%; justify-content: center;">
+                        {{ __('Submit Project for Screening') }}
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+
+    </div>
+</section>
+
 @endsection

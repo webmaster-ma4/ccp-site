@@ -1,73 +1,77 @@
 <footer class="footer">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            {{-- Column 1: Brand & About --}}
             <div>
-                <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem;">
-                    <span style="width: 32px; height: 32px; background: #087F5B; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">CC</span>
-                    <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: #FFFFFF;">
-                        {{ __('Climate') }} <span style="color: #20C997;">{{ __('Catalyst') }}</span>
-                    </span>
-                </div>
-                <p class="footer-text" style="max-width: 320px;">
-                    {{ __('Accelerating breakthrough climate solutions through funding, visibility and global collaboration. The world\'s most ambitious climate innovation prize.') }}
+                <a href="{{ route('home', ['locale' => app()->getLocale()]) }}" aria-label="{{ __('Climate Catalyst Prize') }}">
+                    <img src="{{ asset('images/logo-ccp-white.svg') }}" alt="CCP Logo" style="height: 54px;">
+                </a>
+                <p class="footer-brand-desc">
+                    {{ __('Climate Catalyst Prize is a global NGO dedicated to helping Least Developed Countries build resilience and unlock climate finance for sustainable low-carbon economies.') }}
                 </p>
-                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-                    <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='rgba(8,127,91,0.2)'; this.style.color='#20C997'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.4)'" aria-label="LinkedIn">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                    <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                </div>
+            </div>
+            
+            {{-- Column 2: Navigation --}}
+            <div>
+                <h4 class="footer-col-title">{{ __('Organization') }}</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ route('about', ['locale' => app()->getLocale()]) }}">{{ __('Who We Are') }}</a></li>
+                    <li><a href="{{ route('services', ['locale' => app()->getLocale()]) }}">{{ __('What We Do') }}</a></li>
+                    <li><a href="{{ route('map', ['locale' => app()->getLocale()]) }}">{{ __('Where We Work (LDCs)') }}</a></li>
+                    <li><a href="{{ route('blog', ['locale' => app()->getLocale()]) }}">{{ __('Insights & Reports') }}</a></li>
+                    <li><a href="{{ route('contact', ['locale' => app()->getLocale()]) }}">{{ __('Contact Us') }}</a></li>
+                </ul>
+            </div>
+            
+            {{-- Column 3: Resources --}}
+            <div>
+                <h4 class="footer-col-title">{{ __('Resources') }}</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ route('apply', ['locale' => app()->getLocale()]) }}">{{ __('Apply for Funding') }}</a></li>
+                    <li><a href="{{ route('faq', ['locale' => app()->getLocale()]) }}">{{ __('Grant Guidelines') }}</a></li>
+                    <li><a href="#">{{ __('Impact Reports') }}</a></li>
+                    <li><a href="#">{{ __('Carbon Market Data') }}</a></li>
+                    <li><a href="#">{{ __('Media Kit') }}</a></li>
+                </ul>
+            </div>
+            
+            {{-- Column 4: Contact --}}
+            <div>
+                <h4 class="footer-col-title">{{ __('Headquarters') }}</h4>
+                <div class="footer-contact-row">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span>100 Climate Avenue<br>Geneva, Switzerland 1201</span>
+                </div>
+                <div class="footer-contact-row">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <a href="mailto:contact@climatecatalystprize.org">contact@climatecatalystprize.org</a>
+                </div>
+                <div class="footer-contact-row" style="margin-top: 1.5rem;">
+                    <a href="{{ route('apply', ['locale' => app()->getLocale()]) }}" class="btn btn-outline-white btn-sm w-full" style="justify-content: center; width: 100%;">
+                        {{ __('Submit a Project') }}
                     </a>
                 </div>
             </div>
-
-            <div>
-                <h4 class="footer-heading">{{ __('Quick Links') }}</h4>
-                <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#about" class="footer-link">{{ __('About') }}</a>
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#categories" class="footer-link">{{ __('Categories') }}</a>
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#winners" class="footer-link">{{ __('Winners') }}</a>
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#partners" class="footer-link">{{ __('Partners') }}</a>
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#apply" class="footer-link">{{ __('Apply Now') }}</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="footer-heading">{{ __('Resources') }}</h4>
-                <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-                    <a href="{{ route('blog', ['locale' => $locale]) }}" class="footer-link">{{ __('Insights') }}</a>
-                    <a href="{{ route('faq', ['locale' => $locale]) }}" class="footer-link">{{ __('FAQ') }}</a>
-                    <a href="{{ route('map', ['locale' => $locale]) }}" class="footer-link">{{ __('Where We Work') }}</a>
-                    <a href="{{ route('apply', ['locale' => $locale]) }}" class="footer-link">{{ __('Apply for Support') }}</a>
-                    <a href="/sitemap.xml" class="footer-link">{{ __('Sitemap') }}</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="footer-heading">{{ __('Contact') }}</h4>
-                <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-                    <a href="mailto:info@climatecatalyst.org" class="footer-link">info@climatecatalyst.org</a>
-                </div>
-            </div>
         </div>
-
-        <hr class="footer-divider">
-
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-            <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem; margin: 0;">
-                &copy; {{ date('Y') }} {{ __('Climate Catalyst Prize') }}. {{ __('All rights reserved.') }}
-            </p>
-            <div style="display: flex; gap: 1.5rem;">
-                <a href="#" style="color: rgba(255,255,255,0.3); font-size: 0.8rem; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">{{ __('Privacy Policy') }}</a>
-                <a href="#" style="color: rgba(255,255,255,0.3); font-size: 0.8rem; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">{{ __('Terms of Service') }}</a>
-                <a href="#" style="color: rgba(255,255,255,0.3); font-size: 0.8rem; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">{{ __('Cookie Policy') }}</a>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-copy">
+                &copy; {{ date('Y') }} Climate Catalyst Prize. {{ __('All rights reserved.') }}
+            </div>
+            <div class="low-carbon-tag">
+                <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                {{ __('Low Carbon Architecture') }} &bull; {{ __('0.12g CO2/view') }}
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">{{ __('Privacy Policy') }}</a>
+                <a href="#">{{ __('Terms of Use') }}</a>
+                <a href="#">{{ __('Cookie Policy') }}</a>
             </div>
         </div>
     </div>
 </footer>
-
-<style>
-@media (max-width: 768px) {
-    footer > div > div:first-child {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-}
-</style>

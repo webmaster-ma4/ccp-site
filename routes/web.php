@@ -16,6 +16,13 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/switch-language/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'fr'])) {
+        $locale = config('app.fallback_locale');
+    }
+    return redirect()->route('home.locale', ['locale' => $locale]);
+})->name('locale.switch');
+
 Route::get('/', [HomeController::class, '__invoke'])->name('home');
 Route::get('/{locale}', [HomeController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('home.locale');
 Route::get('/{locale}/about', [AboutController::class, '__invoke'])->whereIn('locale', ['en', 'fr'])->name('about');

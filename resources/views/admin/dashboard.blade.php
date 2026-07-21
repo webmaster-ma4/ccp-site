@@ -1,234 +1,120 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="admin-content">
-    <div class="page-header">
-        <div>
-            <h1 class="page-title">{{ __('Dashboard') }}</h1>
-            <p class="page-subtitle">{{ __('Welcome to the Climate Catalyst Prize admin panel') }}</p>
+
+{{-- STAT CARDS --}}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+    
+    <div class="admin-stat-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div class="admin-stat-label">{{ __('Total Insights') }}</div>
+            <div class="admin-stat-icon" style="background: rgba(8,28,58,0.06); color: #081C3A;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            </div>
         </div>
+        <div class="admin-stat-value">{{ $postsCount }}</div>
+    </div>
+    
+    <div class="admin-stat-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div class="admin-stat-label">{{ __('Categories') }}</div>
+            <div class="admin-stat-icon" style="background: rgba(200,160,77,0.1); color: #C8A04D;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+            </div>
+        </div>
+        <div class="admin-stat-value">{{ $categoriesCount }}</div>
+    </div>
+    
+    <div class="admin-stat-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div class="admin-stat-label">{{ __('LDCs Tracking') }}</div>
+            <div class="admin-stat-icon" style="background: rgba(34,197,94,0.1); color: #22C55E;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+        </div>
+        <div class="admin-stat-value">{{ $activeCountriesCount }} <span style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; color: #8FA0B4;">/ {{ $countriesCount }}</span></div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ $postsCount }}</div>
-                <div class="stat-label">{{ __('Articles') }}</div>
-            </div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ $categoriesCount }}</div>
-                <div class="stat-label">{{ __('Categories') }}</div>
-            </div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ $activeCountriesCount }}</div>
-                <div class="stat-label">{{ __('Active Countries') }}</div>
-            </div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ $countriesCount }}</div>
-                <div class="stat-label">{{ __('Total Countries') }}</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="dashboard-grid">
-        <!-- Recent Articles -->
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">{{ __('Recent Articles') }}</h2>
-                <a href="{{ route('admin.posts.index') }}" class="btn btn-sm btn-secondary">{{ __('View all') }}</a>
-            </div>
-            <div class="table-wrapper">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>{{ __('Title') }}</th>
-                            <th>{{ __('Category') }}</th>
-                            <th>{{ __('Published') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($recentPosts as $post)
-                            <tr>
-                                <td>
-                                    <div class="fw-semibold">{{ $post->title }}</div>
-                                </td>
-                                <td>{{ optional($post->category)->name ?? __('No category') }}</td>
-                                <td>{{ $post->published_at ? $post->published_at->format('d M Y') : __('Draft') }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="text-center py-4 text-muted">
-                                    {{ __('No articles yet. Create your first article to get started.') }}
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="card">
-            <h2 class="card-title" style="margin: 0 0 1.25rem;">{{ __('Quick Actions') }}</h2>
-            <div class="quick-actions">
-                <a href="{{ route('admin.posts.create') }}" class="quick-action-item">
-                    <div class="quick-action-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-                    </div>
-                    <div>
-                        <div class="quick-action-title">{{ __('New Article') }}</div>
-                        <div class="quick-action-desc">{{ __('Create a new blog post or insight') }}</div>
-                    </div>
-                </a>
-                <a href="{{ route('admin.categories.create') }}" class="quick-action-item">
-                    <div class="quick-action-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div>
-                        <div class="quick-action-title">{{ __('New Category') }}</div>
-                        <div class="quick-action-desc">{{ __('Add a new content category') }}</div>
-                    </div>
-                </a>
-                <a href="{{ route('admin.eligible-countries.create') }}" class="quick-action-item">
-                    <div class="quick-action-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                    </div>
-                    <div>
-                        <div class="quick-action-title">{{ __('Add Country') }}</div>
-                        <div class="quick-action-desc">{{ __('Manage eligible countries') }}</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
 </div>
-@endsection
 
-@section('styles')
-<style>
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.25rem;
-        margin-bottom: 1.5rem;
-    }
-    .stat-card {
-        background: #fff;
-        border: 1px solid #E2E8E2;
-        border-radius: 16px;
-        padding: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: 0 1px 3px rgba(28,43,36,0.04);
-    }
-    .stat-icon {
-        width: 48px;
-        height: 48px;
-        background: #E8F5EF;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #087F5B;
-        flex-shrink: 0;
-    }
-    .stat-value {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #1C2B24;
-        line-height: 1;
-        margin-bottom: 0.25rem;
-    }
-    .stat-label {
-        font-size: 0.85rem;
-        color: #5B6F66;
-        font-weight: 500;
-    }
-    .dashboard-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 1.5rem;
-    }
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-    .card-title {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin: 0;
-    }
-    .quick-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    .quick-action-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: 12px;
-        background: #F5F1E8;
-        text-decoration: none;
-        color: #1C2B24;
-        transition: all 0.2s;
-        border: 1px solid transparent;
-    }
-    .quick-action-item:hover {
-        background: #E8F5EF;
-        border-color: #087F5B;
-        transform: translateX(4px);
-    }
-    .quick-action-icon {
-        width: 40px;
-        height: 40px;
-        background: #fff;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #087F5B;
-        flex-shrink: 0;
-    }
-    .quick-action-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-bottom: 0.15rem;
-    }
-    .quick-action-desc {
-        font-size: 0.8rem;
-        color: #5B6F66;
-    }
-    @media (max-width: 1024px) {
-        .dashboard-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-        .stats-grid { grid-template-columns: 1fr; }
-    }
-</style>
+{{-- RECENT ACTIVITY --}}
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+    
+    <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+            <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin: 0;">{{ __('Recent Publications') }}</h3>
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-navy btn-sm">{{ __('View All') }}</a>
+        </div>
+        
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>{{ __('Title') }}</th>
+                        <th>{{ __('Category') }}</th>
+                        <th>{{ __('Status') }}</th>
+                        <th style="text-align: right;">{{ __('Date') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($recentPosts as $post)
+                    <tr>
+                        <td style="font-weight: 600;">
+                            <a href="{{ route('admin.posts.edit', $post) }}" style="color: #081C3A; text-decoration: none;">
+                                {{ Str::limit($post->title, 45) }}
+                            </a>
+                        </td>
+                        <td>{{ $post->category->name ?? '-' }}</td>
+                        <td>
+                            @if($post->published_at)
+                                <span class="admin-badge published">{{ __('Published') }}</span>
+                            @else
+                                <span class="admin-badge draft">{{ __('Draft') }}</span>
+                            @endif
+                        </td>
+                        <td style="text-align: right; color: #8FA0B4;">
+                            {{ $post->created_at->format('M d, Y') }}
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 2rem; color: #8FA0B4;">
+                            {{ __('No publications found.') }}
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div>
+        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #081C3A; margin: 0 0 1rem 0;">{{ __('Quick Actions') }}</h3>
+        
+        <div style="background: #FFFFFF; border: 1px solid #E0E6ED; border-radius: 10px; padding: 1.5rem;">
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-gold w-full" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                {{ __('New Publication') }}
+            </a>
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-outline-navy w-full" style="width: 100%; justify-content: center; margin-bottom: 1rem;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                {{ __('New Category') }}
+            </a>
+            
+            <div style="border-top: 1px solid #EEF1F5; margin: 1.5rem 0;"></div>
+            
+            <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #8FA0B4; margin-bottom: 1rem;">{{ __('System Status') }}</h4>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #162235; margin-bottom: 0.5rem;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E;"></div>
+                {{ __('Database Connection: Active') }}
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #162235;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E;"></div>
+                {{ __('Storage Disk: Healthy') }}
+            </div>
+        </div>
+    </div>
+    
+</div>
+
 @endsection

@@ -1,62 +1,77 @@
-<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #E2E8E2; transition: all 0.3s ease;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; height: 68px;">
-            <a href="{{ route('home.locale', ['locale' => $locale]) }}" style="display: flex; align-items: center; gap: 0.65rem; text-decoration: none;">
-                <span style="width: 32px; height: 32px; background: #087F5B; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">CC</span>
-                <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: #1C2B24;">
-                    {{ __("Climate") }} <span style="color: #087F5B;">{{ __("Catalyst") }}</span>
-                </span>
-            </a>
+@props(['locale' => app()->getLocale()])
 
-            <div class="desktop-nav" style="display: flex; align-items: center; gap: 0.25rem;">
-                <a href="{{ route('home.locale', ['locale' => $locale]) }}#about" style="padding: 0.5rem 1rem; border-radius: 9999px; color: #5B6F66; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none; font-family: 'Manrope', sans-serif;" onmouseover="this.style.color='#087F5B'; this.style.background='#E8F5EF'" onmouseout="this.style.color='#5B6F66'; this.style.background='transparent'">{{ __('About') }}</a>
-                <a href="{{ route('services', ['locale' => $locale]) }}" style="padding: 0.5rem 1rem; border-radius: 9999px; color: #5B6F66; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none; font-family: 'Manrope', sans-serif;" onmouseover="this.style.color='#087F5B'; this.style.background='#E8F5EF'" onmouseout="this.style.color='#5B6F66'; this.style.background='transparent'">{{ __('Services') }}</a>
-                <a href="{{ route('map', ['locale' => $locale]) }}" style="padding: 0.5rem 1rem; border-radius: 9999px; color: #5B6F66; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none; font-family: 'Manrope', sans-serif;" onmouseover="this.style.color='#087F5B'; this.style.background='#E8F5EF'" onmouseout="this.style.color='#5B6F66'; this.style.background='transparent'">{{ __('Where We Work') }}</a>
-                <a href="{{ route('blog', ['locale' => $locale]) }}" style="padding: 0.5rem 1rem; border-radius: 9999px; color: #5B6F66; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none; font-family: 'Manrope', sans-serif;" onmouseover="this.style.color='#087F5B'; this.style.background='#E8F5EF'" onmouseout="this.style.color='#5B6F66'; this.style.background='transparent'">{{ __('Insights') }}</a>
-                <a href="{{ route('faq', ['locale' => $locale]) }}" style="padding: 0.5rem 1rem; border-radius: 9999px; color: #5B6F66; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none; font-family: 'Manrope', sans-serif;" onmouseover="this.style.color='#087F5B'; this.style.background='#E8F5EF'" onmouseout="this.style.color='#5B6F66'; this.style.background='transparent'">{{ __('FAQ') }}</a>
+<nav id="main-navbar" class="navbar">
+    <div class="navbar-inner">
+        {{-- Logo --}}
+        <a href="{{ route('home', ['locale' => $locale]) }}" class="navbar-logo" aria-label="{{ __('Climate Catalyst Prize') }}">
+            <img src="{{ asset('images/logo-ccp-white.svg') }}" alt="CCP Logo" class="logo-light">
+            <img src="{{ asset('images/logo-ccp.svg') }}" alt="CCP Logo" class="logo-dark">
+        </a>
 
-                <div style="display: flex; gap: 0.25rem; margin-left: 0.75rem; padding-left: 0.75rem; border-left: 1px solid #E2E8E2;">
-                    <a href="{{ route('home.locale', ['locale' => 'en']) }}" style="padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-decoration: none; {{ $locale === 'en' ? 'background:#E8F5EF; color:#087F5B;' : 'color:#A3B3AB;' }} font-family: 'Manrope', sans-serif;">{{ __('EN') }}</a>
-                    <a href="{{ route('home.locale', ['locale' => 'fr']) }}" style="padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-decoration: none; {{ $locale === 'fr' ? 'background:#E8F5EF; color:#087F5B;' : 'color:#A3B3AB;' }} font-family: 'Manrope', sans-serif;">{{ __('FR') }}</a>
-                </div>
+        {{-- Desktop Nav --}}
+        <ul class="navbar-nav">
+            <li><a href="{{ route('home', ['locale' => $locale]) }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __('Home') }}</a></li>
+            <li><a href="{{ route('about', ['locale' => $locale]) }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">{{ __('Who We Are') }}</a></li>
+            <li><a href="{{ route('services', ['locale' => $locale]) }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">{{ __('What We Do') }}</a></li>
+            <li><a href="{{ route('map', ['locale' => $locale]) }}" class="{{ request()->routeIs('map') ? 'active' : '' }}">{{ __('LDC Focus') }}</a></li>
+            <li><a href="{{ route('blog', ['locale' => $locale]) }}" class="{{ request()->routeIs('blog') ? 'active' : '' }}">{{ __('Insights') }}</a></li>
+            <li><a href="{{ route('faq', ['locale' => $locale]) }}" class="{{ request()->routeIs('faq') ? 'active' : '' }}">{{ __('FAQ') }}</a></li>
+            <li><a href="{{ route('contact', ['locale' => $locale]) }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">{{ __('Contact') }}</a></li>
+        </ul>
 
-                <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-primary" style="text-decoration: none; margin-left: 0.75rem; padding: 0.55rem 1.25rem; font-size: 0.8rem;">
-                    {{ __('Apply for support') }}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
+        {{-- Actions --}}
+        <div class="navbar-actions">
+            {{-- Language Switcher --}}
+            <div class="lang-switcher">
+                <a href="{{ route('locale.switch', ['locale' => 'en']) }}" class="lang-btn {{ $locale === 'en' ? 'active' : '' }}">EN</a>
+                <a href="{{ route('locale.switch', ['locale' => 'fr']) }}" class="lang-btn {{ $locale === 'fr' ? 'active' : '' }}">FR</a>
             </div>
 
-            <button class="mobile-toggle" style="display: none; background: none; border: none; color: #1C2B24; cursor: pointer; padding: 0.5rem;" onclick="toggleMobile()">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+            {{-- CTA Apply --}}
+            <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-gold btn-sm">
+                {{ __('Apply for Funding') }}
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+
+            {{-- Mobile Toggle --}}
+            <button class="navbar-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </div>
-
-            <div class="mobile-menu" style="display: none; padding: 1rem 1.5rem 1.5rem; background: #fff; border-top: 1px solid #E2E8E2;">
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ route('home.locale', ['locale' => $locale]) }}#about" style="padding: 0.75rem 1rem; border-radius: 12px; color: #1C2B24; text-decoration: none; font-size: 0.9rem;">{{ __('About') }}</a>
-                    <a href="{{ route('services', ['locale' => $locale]) }}" style="padding: 0.75rem 1rem; border-radius: 12px; color: #1C2B24; text-decoration: none; font-size: 0.9rem;">{{ __('Services') }}</a>
-                    <a href="{{ route('map', ['locale' => $locale]) }}" style="padding: 0.75rem 1rem; border-radius: 12px; color: #1C2B24; text-decoration: none; font-size: 0.9rem;">{{ __('Where We Work') }}</a>
-                    <a href="{{ route('blog', ['locale' => $locale]) }}" style="padding: 0.75rem 1rem; border-radius: 12px; color: #1C2B24; text-decoration: none; font-size: 0.9rem;">{{ __('Insights') }}</a>
-                    <a href="{{ route('faq', ['locale' => $locale]) }}" style="padding: 0.75rem 1rem; border-radius: 12px; color: #1C2B24; text-decoration: none; font-size: 0.9rem;">{{ __('FAQ') }}</a>
-                    <div style="display: flex; gap: 0.5rem; padding: 0.75rem 1rem;">
-                        <a href="{{ route('home.locale', ['locale' => 'en']) }}" style="padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none; {{ $locale === 'en' ? 'background:#E8F5EF; color:#087F5B;' : 'color:#5B6F66;' }}">{{ __('EN') }}</a>
-                        <a href="{{ route('home.locale', ['locale' => 'fr']) }}" style="padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none; {{ $locale === 'fr' ? 'background:#E8F5EF; color:#087F5B;' : 'color:#5B6F66;' }}">{{ __('FR') }}</a>
-                    </div>
-                    <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-primary" style="text-decoration: none; justify-content: center; margin-top: 0.5rem;">{{ __('Apply for support') }}</a>
-                </div>
-            </div>
 </nav>
 
-<style>
-@media (max-width: 768px) {
-    .desktop-nav { display: none !important; }
-    .mobile-toggle { display: block !important; }
-    .mobile-menu.open { display: block !important; }
-}
-</style>
-<script>
-function toggleMobile() {
-    document.querySelector('.mobile-menu').classList.toggle('open');
-}
-</script>
+{{-- Drawer Overlay --}}
+<div class="drawer-overlay" id="drawer-overlay"></div>
+
+{{-- Mobile Drawer --}}
+<aside class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+        <img src="{{ asset('images/logo-ccp.svg') }}" alt="CCP Logo" style="height: 38px;">
+        <button class="mobile-drawer-close" id="drawer-close" aria-label="Close navigation">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+    
+    <nav class="mobile-drawer-nav">
+        <a href="{{ route('home', ['locale' => $locale]) }}">{{ __('Home') }}</a>
+        <a href="{{ route('about', ['locale' => $locale]) }}">{{ __('Who We Are') }}</a>
+        <a href="{{ route('services', ['locale' => $locale]) }}">{{ __('What We Do') }}</a>
+        <a href="{{ route('map', ['locale' => $locale]) }}">{{ __('LDC Focus') }}</a>
+        <a href="{{ route('blog', ['locale' => $locale]) }}">{{ __('Insights') }}</a>
+        <a href="{{ route('faq', ['locale' => $locale]) }}">{{ __('FAQ') }}</a>
+        <a href="{{ route('contact', ['locale' => $locale]) }}">{{ __('Contact') }}</a>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+        <a href="{{ route('apply', ['locale' => $locale]) }}" class="btn btn-gold w-full justify-center" style="width: 100%; justify-content: center;">
+            {{ __('Apply for Funding') }}
+        </a>
+    </div>
+</aside>
