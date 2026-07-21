@@ -1,44 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="155 220 725 210" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 135" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
   <defs>
-    <linearGradient id="goldGradientWhite" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#a67b32" />
-      <stop offset="25%" stop-color="#d9af59" />
-      <stop offset="45%" stop-color="#fff0b3" />
-      <stop offset="65%" stop-color="#e6be63" />
-      <stop offset="85%" stop-color="#b8893d" />
-      <stop offset="100%" stop-color="#f2d179" />
-    </linearGradient>
-
     <style>
-      .white-text { fill: #ffffff; }
-      .gold-text { fill: url(#goldGradientWhite); }
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&amp;family=Inter:wght@700;800&amp;display=swap');
       
-      .brand-c {
-        font-family: "Didot", "Bodoni MT", "Cinzel", "Playfair Display", "Times New Roman", serif;
-        font-size: 270px;
-        font-weight: 600;
+      .brand-title-white {
+        font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+        font-size: 104px;
+        font-weight: 800;
+        fill: #FFFFFF;
+      }
+      .brand-title-gold {
+        font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+        font-size: 104px;
+        font-weight: 800;
+        fill: url(#goldGradWhite);
+      }
+      .brand-sub-white {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.38em;
+        fill: #C8A04D;
+        text-transform: uppercase;
       }
     </style>
+
+    <linearGradient id="goldGradWhite" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9A6E28" />
+      <stop offset="25%" stop-color="#CBA14B" />
+      <stop offset="50%" stop-color="#F7E7A1" />
+      <stop offset="75%" stop-color="#D4AA52" />
+      <stop offset="100%" stop-color="#E3BE66" />
+    </linearGradient>
   </defs>
 
-  <g transform="translate(0, 0)">
-    <!-- Monogramme CC P unique -->
-    <g class="brand-c">
-      <text x="160" y="375" class="white-text">C</text>
-      <text x="395" y="375" class="white-text">C</text>
-      <text x="635" y="375" class="gold-text">P</text>
-    </g>
+  <g transform="translate(10, 5)">
+    <!-- Monogram C C P -->
+    <text x="5" y="92" class="brand-title-white">C</text>
+    <text x="105" y="92" class="brand-title-white">C</text>
+    <text x="205" y="92" class="brand-title-gold">P</text>
 
-    <!-- Flèche dorée -->
-    <path d="M 370 412 
-             C 450 415, 560 410, 665 372 
-             C 740 345, 805 298, 843 242 
-             L 818 253 
-             L 872 225 
-             L 856 280 
-             L 848 261 
-             C 812 312, 750 357, 672 385 
-             C 570 421, 455 425, 370 412 Z" 
-          fill="url(#goldGradientWhite)" />
+    <!-- Golden Swoosh Accent -->
+    <path d="M 100 98 C 140 101, 185 96, 230 84 C 265 74, 298 56, 318 36 L 305 40 L 332 30 L 324 50 L 320 43 C 302 61, 272 78, 235 88 C 190 101, 142 105, 100 98 Z" fill="url(#goldGradWhite)" />
+
+    <!-- Subtitle Tagline -->
+    <text x="8" y="122" class="brand-sub-white">CLIMATE CATALYST PRIZE</text>
   </g>
 </svg>
