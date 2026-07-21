@@ -70,13 +70,16 @@
 @push('head')
 <style>
 /* Blog post specific styles to make markdown/HTML content look institutional */
+.post-body h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: #081C3A; margin: 2.5rem 0 1rem; }
 .post-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #081C3A; margin: 2.5rem 0 1rem; }
 .post-body h3 { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #162235; margin: 2rem 0 1rem; }
 .post-body p { margin-bottom: 1.5rem; }
 .post-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc; }
+.post-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: decimal; }
 .post-body li { margin-bottom: 0.5rem; }
+.post-body img { max-width: 100%; height: auto; border-radius: 10px; margin: 2rem 0; box-shadow: 0 4px 16px rgba(8, 28, 58, 0.08); display: block; }
 .post-body a { color: #C8A04D; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(200,160,77,0.4); text-underline-offset: 3px; }
 .post-body a:hover { color: #9A7628; }
-.post-body blockquote { font-style: italic; color: #162235; border-left: 3px solid #081C3A; padding-left: 1.5rem; margin: 2rem 0; font-size: 1.2rem; }
+.post-body blockquote { font-style: italic; color: #162235; border-left: 3px solid #081C3A; padding: 0.75rem 1.5rem; margin: 2rem 0; font-size: 1.15rem; background: #F8FAFC; border-radius: 0 8px 8px 0; }
 </style>
 @endpush

@@ -19,8 +19,14 @@ class EligibleCountryController extends Controller
 
     public function map(Request $request)
     {
+        $countries = EligibleCountry::where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get();
+
         return view('map', [
             'locale' => app()->getLocale(),
+            'countries' => $countries,
         ]);
     }
 }

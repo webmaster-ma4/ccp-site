@@ -301,44 +301,23 @@
         </p>
     </div>
     
-    <div class="map-container animate-up">
-        <div class="map-viewport">
-            {{-- Interactive SVG Map Component (Using a simplified illustrative map for the demo) --}}
-            <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
-                <!-- Placeholder Continents (Other) -->
-                <path class="country-other" d="M150,150 Q180,100 250,120 T300,200 T250,300 T150,250 Z" />
-                <path class="country-other" d="M700,100 Q750,50 850,80 T900,180 T800,250 T650,200 Z" />
-                <path class="country-other" d="M400,50 Q480,30 550,60 T600,150 T500,200 T420,120 Z" />
-                
-                <!-- Africa / LDC Regions -->
-                <g class="ldc-group">
-                    <path class="country-ldc" id="cd-sn" data-name="Senegal" data-region="West Africa" data-projects="4 Projects" d="M450,220 Q480,200 520,230 T500,300 T440,280 Z" />
-                    <path class="country-ldc" id="cd-rw" data-name="Rwanda" data-region="East Africa" data-projects="6 Projects" d="M530,260 Q550,250 570,270 T550,310 T520,280 Z" />
-                    <path class="country-ldc" id="cd-bd" data-name="Bangladesh" data-region="South Asia" data-projects="12 Projects" d="M720,220 Q740,200 760,230 T740,260 T710,240 Z" />
-                    <path class="country-ldc" id="cd-md" data-name="Madagascar" data-region="East Africa" data-projects="3 Projects" d="M580,350 Q600,330 620,380 T590,420 T570,380 Z" />
-                    <path class="country-ldc" id="cd-ht" data-name="Haiti" data-region="Caribbean" data-projects="2 Projects" d="M280,220 Q290,215 300,225 T295,235 T285,230 Z" />
-                </g>
-            </svg>
-            
-            <div class="map-tooltip" id="map-tooltip">
-                <div class="map-tooltip-name" id="mt-name">Country</div>
-                <div class="map-tooltip-region" id="mt-region">Region</div>
-                <div class="map-tooltip-desc" id="mt-desc">Details</div>
-            </div>
+    <div class="map-container animate-up" style="background: #FFFFFF; border-radius: 16px; border: 1px solid #E0E6ED; padding: 1.5rem; box-shadow: 0 16px 40px rgba(8,28,58,0.05);">
+        <div style="position: relative; border-radius: 12px; overflow: hidden; height: 420px; background: #0A192F; border: 1px solid #CBD5E1;">
+            <div id="home-leaflet-map" style="width: 100%; height: 100%;"></div>
         </div>
-        <div class="map-footer">
-            <div class="map-legend">
-                <div class="map-legend-item">
-                    <div class="map-legend-dot" style="background: #C8A04D;"></div>
-                    <span>{{ __('LDC with Active CCP Projects') }}</span>
+        <div class="map-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; flex-wrap: wrap; gap: 1rem;">
+            <div class="map-legend" style="display: flex; gap: 1.25rem;">
+                <div class="map-legend-item" style="display: flex; align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; color: #081C3A;">
+                    <div class="map-legend-dot" style="width: 12px; height: 12px; border-radius: 50%; background: #C8A04D;"></div>
+                    <span>{{ __('LDC avec projets actifs CCP') }}</span>
                 </div>
-                <div class="map-legend-item">
-                    <div class="map-legend-dot" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(8,28,58,0.2);"></div>
-                    <span>{{ __('Other Regions') }}</span>
+                <div class="map-legend-item" style="display: flex; align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; color: #5E7590;">
+                    <div class="map-legend-dot" style="width: 12px; height: 12px; border-radius: 50%; background: #1E3A5F;"></div>
+                    <span>{{ __('Autres Pays PMA') }}</span>
                 </div>
             </div>
             <a href="{{ route('map', ['locale' => $locale]) }}" class="btn btn-outline-navy btn-sm">
-                {{ __('View Detailed Map') }}
+                {{ __('Voir la Carte Interactive Détaillée') }}
             </a>
         </div>
     </div>
@@ -495,34 +474,56 @@
 
 @endsection
 
+@push('head')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+@endpush
+
 @push('scripts')
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Basic JS for Interactive Map Hover Tooltips
-    const tooltip = document.getElementById('map-tooltip');
-    const tooltipName = document.getElementById('mt-name');
-    const tooltipRegion = document.getElementById('mt-region');
-    const tooltipDesc = document.getElementById('mt-desc');
-    
-    document.querySelectorAll('.country-ldc').forEach(country => {
-        country.addEventListener('mousemove', (e) => {
-            const rect = document.querySelector('.map-viewport').getBoundingClientRect();
-            let x = e.clientX - rect.left + 15;
-            let y = e.clientY - rect.top + 15;
-            
-            tooltip.style.left = x + 'px';
-            tooltip.style.top = y + 'px';
-            
-            tooltipName.textContent = country.dataset.name;
-            tooltipRegion.textContent = country.dataset.region;
-            tooltipDesc.textContent = country.dataset.projects;
-            
-            tooltip.classList.add('visible');
-        });
-        
-        country.addEventListener('mouseleave', () => {
-            tooltip.classList.remove('visible');
-        });
+    const homeMapEl = document.getElementById('home-leaflet-map');
+    if (!homeMapEl) return;
+
+    const homeMap = L.map('home-leaflet-map', {
+        center: [12.0, 15.0],
+        zoom: 3,
+        minZoom: 2,
+        maxZoom: 6,
+        zoomControl: false
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(homeMap);
+
+    // Key LDC Country Markers
+    const ldcPoints = [
+        { name: "Sénégal", lat: 14.4974, lng: -14.4524, active: true },
+        { name: "Côte d'Ivoire", lat: 7.54, lng: -5.5471, active: true },
+        { name: "Bénin", lat: 9.3077, lng: 2.3158, active: true },
+        { name: "Mali", lat: 17.5707, lng: -3.9962, active: true },
+        { name: "Rwanda", lat: -1.9403, lng: 29.8739, active: true },
+        { name: "Tanzanie", lat: -6.369, lng: 34.8888, active: true },
+        { name: "Madagascar", lat: -18.7669, lng: 46.8691, active: true },
+        { name: "Bangladesh", lat: 23.685, lng: 90.3563, active: true },
+        { name: "Haïti", lat: 18.9712, lng: -72.2852, active: true },
+        { name: "Éthiopie", lat: 9.145, lng: 40.4897, active: true },
+        { name: "Tchad", lat: 15.4542, lng: 18.7322, active: false },
+        { name: "Niger", lat: 17.6078, lng: 8.0817, active: false }
+    ];
+
+    ldcPoints.forEach(p => {
+        L.circleMarker([p.lat, p.lng], {
+            radius: p.active ? 8 : 5,
+            fillColor: p.active ? '#C8A04D' : '#1E3A5F',
+            color: '#FFFFFF',
+            weight: 1.5,
+            opacity: 0.9,
+            fillOpacity: 0.85
+        }).addTo(homeMap).bindPopup(`<b>${p.name}</b><br>${p.active ? 'Projets Actifs CCP' : 'PMA Éligible'}`);
     });
 });
 </script>

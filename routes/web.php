@@ -90,12 +90,14 @@ Route::middleware([AuthenticateAdmin::class])->prefix('admin')->name('admin.')->
     Route::get('/posts/{post}/edit', [AdminPostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{post}', [AdminPostController::class, 'destroy'])->name('posts.destroy');
+    Route::post('/posts/upload-image', [AdminPostController::class, 'uploadImage'])->name('posts.upload-image');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 
     Route::get('/eligible-countries', [EligibleCountryController::class, 'index'])->name('eligible-countries.index');
+    Route::get('/eligible-countries/create', [EligibleCountryController::class, 'create'])->name('eligible-countries.create');
     Route::post('/eligible-countries', [EligibleCountryController::class, 'store'])->name('eligible-countries.store');
     Route::get('/eligible-countries/{eligibleCountry}/edit', [EligibleCountryController::class, 'edit'])->name('eligible-countries.edit');
     Route::put('/eligible-countries/{eligibleCountry}', [EligibleCountryController::class, 'update'])->name('eligible-countries.update');

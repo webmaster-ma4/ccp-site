@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+<div class="admin-action-bar" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
     <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #5E7590;">
         {{ $categories->count() }} {{ __('total categories') }}
     </p>

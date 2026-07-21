@@ -16,12 +16,18 @@
 
 <div class="admin-wrap">
     
+    {{-- Dark Backdrop Overlay for Mobile Sidebar --}}
+    <div id="admin-overlay" class="admin-overlay"></div>
+
     {{-- Sidebar --}}
-    <aside class="admin-sidebar">
-        <div class="admin-sidebar-logo">
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="admin-sidebar-logo" style="display: flex; align-items: center; justify-content: space-between;">
             <a href="{{ route('admin.dashboard') }}">
                 <img src="{{ asset('images/logo-ccp-white.svg') }}" alt="CCP Admin">
             </a>
+            <button type="button" id="admin-sidebar-close" class="admin-sidebar-close" aria-label="Close menu">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
         </div>
         
         <nav class="admin-nav">
@@ -69,12 +75,18 @@
     {{-- Main Area --}}
     <main class="admin-main">
         <header class="admin-topbar">
-            <h1 class="admin-topbar-title">@yield('title')</h1>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; color: #5E7590;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <button type="button" id="admin-sidebar-toggle" class="admin-sidebar-toggle" aria-label="Toggle menu">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <h1 class="admin-topbar-title">@yield('title')</h1>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; color: #5E7590;" class="admin-user-name">
                     {{ auth()->user()->name ?? 'Administrator' }}
                 </div>
-                <div style="width: 32px; height: 32px; background: #C8A04D; border-radius: 50%; color: #081C3A; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem;">
+                <div style="width: 32px; height: 32px; background: #C8A04D; border-radius: 50%; color: #081C3A; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
                     {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
                 </div>
             </div>
@@ -91,6 +103,37 @@
         </div>
     </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('admin-sidebar');
+    const overlay = document.getElementById('admin-overlay');
+    const toggleBtn = document.getElementById('admin-sidebar-toggle');
+    const closeBtn = document.getElementById('admin-sidebar-close');
+
+    function openSidebar() {
+        if (sidebar) sidebar.classList.add('open');
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+});
+</script>
 
 @stack('scripts')
 </body>

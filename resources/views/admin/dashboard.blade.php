@@ -38,7 +38,7 @@
 </div>
 
 {{-- RECENT ACTIVITY --}}
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+<div class="admin-dashboard-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
     
     <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
